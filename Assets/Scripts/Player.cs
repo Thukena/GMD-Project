@@ -5,11 +5,11 @@ public class Player : MonoBehaviour
 {
     public float speed;
     public float jumpHeight;
-    
-    
-    public Rigidbody2D _rigidBody;
+    public GroundChecker GroundChecker;
+    public float _gravity = 5;
+
     private float _movementX;
-    private float _movementZ;
+    private float _movementY;
     
     // Start is called before the first frame update
     void Start()
@@ -19,21 +19,31 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(_movementX, 0f, 0f) * (speed * Time.deltaTime);
-    }
-
-    private void FixedUpdate()
-    {
-        // var movement = new Vector3(_movementX, 00f, 00f);
-        // _rigidBody.AddForce(movement * speed);
+        if (!GroundChecker.isGrounded) {
+            _movementY += Physics2D.gravity.y * _gravity * Time.deltaTime;
+        } else {
+            if (_movementY < 0)
+            {
+                _movementY = 0f;
+            }
+        }
+        
+        transform.Translate(new Vector3(_movementX * speed, _movementY, 0f) * Time.deltaTime);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        print(context.ReadValue<Vector2>());
-        
         var vector = context.ReadValue<Vector2>();
         
         _movementX = vector.x;
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        print("JUMP");
+        if (GroundChecker.isGrounded)
+        {
+            _movementY += jumpHeight;
+        }
     }
 }
