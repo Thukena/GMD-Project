@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     private float _movementX;
     private float _movementY;
+    private bool _facingRight = true;
     
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GroundChecker.isGrounded) {
+        if (!GroundChecker.isGrounded)
+        {
             _movementY += Physics2D.gravity.y * _gravity * Time.deltaTime;
-        } else {
+        }
+        else
+        {
             if (_movementY < 0)
             {
                 _movementY = 0f;
@@ -36,6 +40,11 @@ public class Player : MonoBehaviour
         var vector = context.ReadValue<Vector2>();
         
         _movementX = vector.x;
+
+        if (ShouldFlip())
+        {
+            Flip();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -45,5 +54,18 @@ public class Player : MonoBehaviour
         {
             _movementY += jumpHeight;
         }
+    }
+
+    private bool ShouldFlip()
+    {
+        return (_movementX > 0 && !_facingRight) || (_movementX < 0 && _facingRight);
+    }
+
+    private void Flip()
+    {
+        _facingRight = !_facingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1; 
+        transform.localScale = localScale;
     }
 }
