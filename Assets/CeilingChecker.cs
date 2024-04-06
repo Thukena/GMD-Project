@@ -1,32 +1,30 @@
 using UnityEngine;
 
-public class GroundChecker : MonoBehaviour
+public class CeilingChecker : MonoBehaviour
 {
+    public bool IsTouchingCeiling;
     public Transform parentTransform;
-    public bool isGrounded;
     public CollisionChecker collisionChecker;
+    
     private Renderer parentRenderer;
 
-    // Start is called before the first frame update
     private void Start()
     {
         parentRenderer = parentTransform.GetComponent<Renderer>();
     }
 
-   private void FixedUpdate()
+    private void FixedUpdate()
     {
         if (collisionChecker.isColliding)
         {
             var collider = collisionChecker.collider;
-            isGrounded = true;
-
+            IsTouchingCeiling = true;
             var position = parentTransform.position;
-            parentTransform.position = new Vector3(position.x, collider.bounds.max.y + parentRenderer.bounds.size.y / 2, position.z);; // Set player position to collider top + half player height since position is in the middle of the player
+            parentTransform.position = new Vector3(position.x, collider.bounds.min.y - parentRenderer.bounds.size.y / 2, position.z); // Set player position to collider bottom - half player height since position is in the middle of the player
         }
         else
         {
-            isGrounded = false;
+            IsTouchingCeiling = false;
         }
     }
-
 }

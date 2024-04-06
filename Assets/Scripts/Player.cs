@@ -5,8 +5,10 @@ public class Player : MonoBehaviour
 {
     public float speed;
     public float jumpHeight;
-    public GroundChecker GroundChecker;
-    public float _gravity = 5;
+    public GroundChecker groundChecker;
+    public CollisionChecker wallChecker;
+    public CeilingChecker ceilingChecker;
+    public float gravity = 5;
 
     private float _movementX;
     private float _movementY;
@@ -20,9 +22,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GroundChecker.isGrounded)
+        if (ceilingChecker.IsTouchingCeiling)
         {
-            _movementY += Physics2D.gravity.y * _gravity * Time.deltaTime;
+            if (_movementY > 0)
+            {
+                _movementY = 0f;
+            }
+        }
+        
+        if (!groundChecker.isGrounded)
+        {
+            _movementY += Physics2D.gravity.y * gravity * Time.deltaTime;
         }
         else
         {
@@ -31,8 +41,14 @@ public class Player : MonoBehaviour
                 _movementY = 0f;
             }
         }
+
+        var newPosition = new Vector3(_movementX * speed, _movementY, 0f) * Time.deltaTime;
         
-        transform.Translate(new Vector3(_movementX * speed, _movementY, 0f) * Time.deltaTime);
+        if (wallChecker.isColliding)
+        {
+            newPosition.x = 0f;
+        }
+        transform.Translate(newPosition);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -50,7 +66,7 @@ public class Player : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         print("JUMP");
-        if (GroundChecker.isGrounded)
+        if (groundChecker.isGrounded)
         {
             _movementY += jumpHeight;
         }
