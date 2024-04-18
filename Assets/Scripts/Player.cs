@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public CollisionChecker wallChecker;
     public CeilingChecker ceilingChecker;
     public float gravity = 5;
+    public Animator animator;
 
     private float _movementX;
     private float _movementY;
@@ -65,10 +66,22 @@ public class Player : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        print("JUMP");
-        if (groundChecker.isGrounded)
+        if (context.performed)
         {
-            _movementY += jumpHeight;
+            print("JUMP");
+            if (groundChecker.isGrounded)
+            {
+                _movementY += jumpHeight;
+            }
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            print("ATTACK");
+            animator.SetTrigger("Attack"); 
         }
     }
 
