@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     private float _movementX;
     private float _movementY;
     private bool _facingRight = true;
+    private bool _canDash = true;
+    private bool _isDashing = false;
     
     // Start is called before the first frame update
     void Start()
@@ -43,13 +46,21 @@ public class Player : MonoBehaviour
             }
         }
 
-        var newPosition = new Vector3(_movementX * speed, _movementY, 0f) * Time.deltaTime;
+        var newPositionX = _movementX;
+        var newPositionY = _movementY;
+        
+        if (_isDashing)
+        {
+            newPositionX = _facingRight ? 10f : -10f;
+            newPositionY = 0f;
+        }
         
         if (wallChecker.isColliding)
         {
-            newPosition.x = 0f;
+            newPositionX = 0f;
         }
-        transform.Translate(newPosition);
+        
+        transform.Translate(new Vector3(newPositionX * speed, newPositionY, 0f) * Time.deltaTime);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -69,7 +80,7 @@ public class Player : MonoBehaviour
         if (context.performed)
         {
             print("JUMP");
-            if (groundChecker.isGrounded)
+            if (groundChecker.isGrounded && _isDashing == false)
             {
                 _movementY += jumpHeight;
             }
@@ -83,6 +94,31 @@ public class Player : MonoBehaviour
             print("ATTACK");
             animator.SetTrigger("Attack"); 
         }
+    }
+    
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            print("DASH");
+            if (_canDash)
+            {
+                StartCoroutine(Dash());
+            }
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        _canDash = false;
+        _isDashing = true;
+        var oldGravityValue = gravity;
+        gravity = 0f;
+        yield return new WaitForSeconds(0.1f);
+        gravity = oldGravityValue;
+        _isDashing = false;
+        yield return new WaitForSeconds(0.5f);
+        _canDash = true;
     }
 
     private bool ShouldFlip()

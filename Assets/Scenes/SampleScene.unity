@@ -135,11 +135,11 @@ GameObject:
   - component: {fileID: 124729284}
   - component: {fileID: 124729283}
   - component: {fileID: 124729286}
+  - component: {fileID: 124729291}
   - component: {fileID: 124729288}
   - component: {fileID: 124729287}
   - component: {fileID: 124729289}
   - component: {fileID: 124729290}
-  - component: {fileID: 124729291}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -382,6 +382,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 282f4119-a368-402a-a810-dd279898d7d9
     m_ActionName: Player/Attack[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 124729287}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 19f9ab55-79a4-4007-a2fa-0e301078f9bd
+    m_ActionName: Player/Dash[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
