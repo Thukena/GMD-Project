@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     public CeilingChecker ceilingChecker;
     public float gravity = 5;
     public Animator animator;
+    public Flipper flipper;
 
     private float _movementX;
     private float _movementY;
-    private bool _facingRight = true;
     private bool _canDash = true;
     private bool _isDashing = false;
     
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         
         if (_isDashing)
         {
-            newPositionX = _facingRight ? 10f : -10f;
+            newPositionX = flipper.facingRight ? 10f : -10f;
             newPositionY = 0f;
         }
         
@@ -69,9 +69,9 @@ public class Player : MonoBehaviour
         
         _movementX = vector.x;
 
-        if (ShouldFlip())
+        if (flipper.ShouldFlip(_movementX))
         {
-            Flip();
+            flipper.Flip();
         }
     }
 
@@ -119,18 +119,5 @@ public class Player : MonoBehaviour
         _isDashing = false;
         yield return new WaitForSeconds(0.5f);
         _canDash = true;
-    }
-
-    private bool ShouldFlip()
-    {
-        return (_movementX > 0 && !_facingRight) || (_movementX < 0 && _facingRight);
-    }
-
-    private void Flip()
-    {
-        _facingRight = !_facingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1; 
-        transform.localScale = localScale;
     }
 }
