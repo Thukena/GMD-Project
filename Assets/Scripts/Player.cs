@@ -12,11 +12,10 @@ public class Player : MonoBehaviour
     public float gravity = 5;
     public Animator animator;
     public Flipper flipper;
+    public Dash dash;
 
     private float _movementX;
     private float _movementY;
-    private bool _canDash = true;
-    private bool _isDashing = false;
     
     // Start is called before the first frame update
     void Start()
@@ -36,7 +35,14 @@ public class Player : MonoBehaviour
         
         if (!groundChecker.isGrounded)
         {
-            _movementY += Physics2D.gravity.y * gravity * Time.deltaTime;
+            if (dash.isDashing)
+            {
+                _movementY = 0f;
+            }
+            else
+            {
+                _movementY += Physics2D.gravity.y * gravity * Time.deltaTime;
+            }
         }
         else
         {
@@ -49,7 +55,7 @@ public class Player : MonoBehaviour
         var newPositionX = _movementX;
         var newPositionY = _movementY;
         
-        if (_isDashing)
+        if (dash.isDashing)
         {
             newPositionX = flipper.facingRight ? 10f : -10f;
             newPositionY = 0f;
@@ -80,7 +86,7 @@ public class Player : MonoBehaviour
         if (context.performed)
         {
             print("JUMP");
-            if (groundChecker.isGrounded && _isDashing == false)
+            if (groundChecker.isGrounded && dash.isDashing == false)
             {
                 _movementY += jumpHeight;
             }
@@ -101,23 +107,7 @@ public class Player : MonoBehaviour
         if (context.performed)
         {
             print("DASH");
-            if (_canDash)
-            {
-                StartCoroutine(Dash());
-            }
+            dash.TryDash();
         }
-    }
-
-    private IEnumerator Dash()
-    {
-        _canDash = false;
-        _isDashing = true;
-        var oldGravityValue = gravity;
-        gravity = 0f;
-        yield return new WaitForSeconds(0.1f);
-        gravity = oldGravityValue;
-        _isDashing = false;
-        yield return new WaitForSeconds(0.5f);
-        _canDash = true;
     }
 }
