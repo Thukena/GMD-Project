@@ -61,11 +61,6 @@ public class Player : MonoBehaviour
             newPositionY = 0f;
         }
         
-        if (wallChecker.isColliding)
-        {
-            newPositionX = 0f;
-        }
-        
         transform.Translate(new Vector3(newPositionX * speed, newPositionY, 0f) * Time.deltaTime);
     }
 

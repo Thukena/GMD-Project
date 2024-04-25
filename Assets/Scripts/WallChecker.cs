@@ -17,9 +17,10 @@ public class WallChecker : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (collisionChecker.isColliding)
+        var collider = collisionChecker.GetCollider();
+        
+        if (collider != null)
         {
-            var collider = collisionChecker.collider;
             var position = parentTransform.position;
             
             var colliderEdgePositionX = Flipper.facingRight ? collider.bounds.min.x : collider.bounds.max.x;

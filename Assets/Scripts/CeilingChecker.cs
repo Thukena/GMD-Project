@@ -15,9 +15,9 @@ public class CeilingChecker : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (collisionChecker.isColliding)
-        {
-            var collider = collisionChecker.collider;
+        var collider = collisionChecker.GetCollider();
+        
+        if (collider != null)        {
             IsTouchingCeiling = true;
             var position = parentTransform.position;
             parentTransform.position = new Vector3(position.x, collider.bounds.min.y - parentRenderer.bounds.size.y / 2, position.z); // Set player position to collider bottom - half player height since position is in the middle of the player

@@ -15,9 +15,10 @@ public class GroundChecker : MonoBehaviour
 
    private void FixedUpdate()
     {
-        if (collisionChecker.isColliding)
+        var collider = collisionChecker.GetCollider();
+        
+        if (collider != null)
         {
-            var collider = collisionChecker.collider;
             isGrounded = true;
 
             var position = parentTransform.position;
