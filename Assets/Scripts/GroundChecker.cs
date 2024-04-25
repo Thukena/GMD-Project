@@ -23,6 +23,7 @@ public class GroundChecker : MonoBehaviour
 
             var position = parentTransform.position;
             parentTransform.position = new Vector3(position.x, collider.bounds.max.y + parentRenderer.bounds.size.y / 2, position.z);; // Set player position to collider top + half player height since position is in the middle of the player
+            Physics2D.SyncTransforms(); // update the position of the player immediately to move WallChecker colliderChecker
         }
         else
         {
