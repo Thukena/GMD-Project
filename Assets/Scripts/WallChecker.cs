@@ -23,8 +23,8 @@ public class WallChecker : MonoBehaviour
             var position = parentTransform.position;
             
             var colliderEdgePositionX = Flipper.facingRight ? collider.bounds.min.x : collider.bounds.max.x;
-            var parentPositionX = colliderEdgePositionX + (Flipper.facingRight ? -1 : 1) * parentRenderer.bounds.size.x / 2;
-            parentTransform.position = new Vector3(parentPositionX, position.y, position.z);; // Set player position to collider top + half player height since position is in the middle of the player
+            var parentPositionX = colliderEdgePositionX + (Flipper.facingRight ? -1 : 1) * parentRenderer.bounds.size.x / 2; // Set player positionX to collider edge +/- half player width since position is in the middle of the player
+            parentTransform.position = new Vector3(parentPositionX, position.y, position.z); 
         }
     }
 }
