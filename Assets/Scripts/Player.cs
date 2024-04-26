@@ -14,12 +14,13 @@ public class Player : MonoBehaviour
     public Flipper flipper;
     public Dash dash;
 
-    private float _movementX;
+    private float _currentMovementXInput;
     private float _movementY;
     
     // Start is called before the first frame update
     void Start()
     {
+        dash.OnDashEnd += OnDashEnd;
     }
 
     // Update is called once per frame
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        var newPositionX = _movementX;
+        var newPositionX = _currentMovementXInput;
         var newPositionY = _movementY;
         
         if (dash.isDashing)
@@ -71,11 +72,9 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        var vector = context.ReadValue<Vector2>();
+        _currentMovementXInput = context.ReadValue<Vector2>().x;
         
-        _movementX = vector.x;
-
-        if (flipper.ShouldFlip(_movementX))
+        if (!dash.isDashing && flipper.ShouldFlip(_currentMovementXInput))
         {
             flipper.Flip();
         }
@@ -110,4 +109,14 @@ public class Player : MonoBehaviour
             dash.TryDash();
         }
     }
+    
+    private void OnDashEnd()
+    {
+        print("Dash ended!");
+        if (flipper.ShouldFlip(_currentMovementXInput))
+        {
+            flipper.Flip();
+        }
+    }
+    
 }

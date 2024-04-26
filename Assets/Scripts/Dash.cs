@@ -10,6 +10,7 @@ public class Dash : MonoBehaviour
     public float dashSpeed;
     public float dashDuration;
     public float dashCooldown;
+    public event Action OnDashEnd;
 
     public void TryDash()
     {
@@ -25,7 +26,7 @@ public class Dash : MonoBehaviour
         isDashing = true;
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
-        yield return new WaitForSeconds(0.5f);
+        OnDashEnd?.Invoke();
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
