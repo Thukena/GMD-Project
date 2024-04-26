@@ -308,7 +308,7 @@ MonoBehaviour:
   speed: 10
   jumpHeight: 20
   groundChecker: {fileID: 124729289}
-  wallChecker: {fileID: 1142039084}
+  wallChecker: {fileID: 124729293}
   ceilingChecker: {fileID: 124729290}
   gravity: 5
   animator: {fileID: 124729291}
@@ -487,6 +487,7 @@ MonoBehaviour:
   parentTransform: {fileID: 124729285}
   collisionChecker: {fileID: 1142039084}
   Flipper: {fileID: 124729292}
+  isTouchingWall: 0
 --- !u!114 &124729294
 MonoBehaviour:
   m_ObjectHideFlags: 0

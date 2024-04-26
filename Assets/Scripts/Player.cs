@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float speed;
     public float jumpHeight;
     public GroundChecker groundChecker;
-    public CollisionChecker wallChecker;
+    public WallChecker wallChecker;
     public CeilingChecker ceilingChecker;
     public float gravity = 5;
     public Animator animator;
@@ -61,7 +61,11 @@ public class Player : MonoBehaviour
             newPositionX = flipper.facingRight ? dashSpeed : -dashSpeed;
             newPositionY = 0f;
         }
-        
+
+        if (wallChecker.isTouchingWall)
+        {
+            newPositionX = 0f;
+        }
         transform.Translate(new Vector3(newPositionX * speed, newPositionY, 0f) * Time.deltaTime);
     }
 

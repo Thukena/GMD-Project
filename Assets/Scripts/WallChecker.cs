@@ -6,6 +6,7 @@ public class WallChecker : MonoBehaviour
     public Transform parentTransform;
     public CollisionChecker collisionChecker;
     public Flipper Flipper;
+    public bool isTouchingWall;
     
     private Renderer parentRenderer;
     
@@ -18,9 +19,11 @@ public class WallChecker : MonoBehaviour
     private void FixedUpdate()
     {
         var collider = collisionChecker.GetCollider();
+        isTouchingWall = collider != null;
         
-        if (collider != null)
+        if (isTouchingWall)
         {
+            isTouchingWall = true;
             var position = parentTransform.position;
             
             var colliderEdgePositionX = Flipper.facingRight ? collider.bounds.min.x : collider.bounds.max.x;
