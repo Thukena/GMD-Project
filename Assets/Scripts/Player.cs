@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     private float _currentMovementXInput;
     private float _movementY;
+    private bool _jumpAfterDash;
     
     // Start is called before the first frame update
     void Start()
@@ -85,13 +86,24 @@ public class Player : MonoBehaviour
         if (context.performed)
         {
             print("JUMP");
-            if (groundChecker.isGrounded && dash.isDashing == false)
-            {
-                _movementY += jumpHeight;
-            }
+            Jump();
         }
     }
 
+    private void Jump()
+    {
+        if (groundChecker.isGrounded)
+        {
+            if (dash.isDashing)
+            {
+                _jumpAfterDash = true;
+                return;
+            }
+
+            _movementY = jumpHeight;
+        }    
+    }
+    
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -116,6 +128,12 @@ public class Player : MonoBehaviour
         if (flipper.ShouldFlip(_currentMovementXInput))
         {
             flipper.Flip();
+        }
+
+        if (_jumpAfterDash)
+        {
+            Jump();
+            _jumpAfterDash = false;
         }
     }
     
