@@ -57,7 +57,8 @@ public class Player : MonoBehaviour
         
         if (dash.isDashing)
         {
-            newPositionX = flipper.facingRight ? 10f : -10f;
+            var dashSpeed = dash.dashSpeed;
+            newPositionX = flipper.facingRight ? dashSpeed : -dashSpeed;
             newPositionY = 0f;
         }
         
