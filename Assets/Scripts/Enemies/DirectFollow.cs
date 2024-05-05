@@ -1,15 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
-public class DirectFollow : MonoBehaviour, IFollow
+namespace Enemies
 {
-    [SerializeField] private float speed;
-    
-    public void FollowTarget(Transform target)
+    public class DirectFollow : MonoBehaviour, IFollow
     {
-        var direction = new Vector3(target.position.x, transform.position.y, transform.position.z);
-        
-        transform.position = Vector3.MoveTowards(transform.position, direction, speed * Time.deltaTime);
+        [SerializeField] private PlayerMovement playerMovement;
+
+        public bool IsFollowing { get; set; }
+
+        public void FollowTarget(Transform target)
+        {
+            IsFollowing = true;
+            playerMovement.Move(target.position.x > transform.position.x ? 1 : -1);
+        }
+
+        public void StopFollowTarget()
+        {
+            playerMovement.Move(0);
+            IsFollowing = false;
+        }
     }
 }

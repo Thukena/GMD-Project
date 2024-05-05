@@ -1,27 +1,34 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+namespace Enemies
 {
-    
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private float attackDistance;
-    
-    private IFollow _follow;
-
-    private void Start()
+    public class EnemyController : MonoBehaviour
     {
-        _follow = GetComponent<IFollow>();
-    }
+    
+        [SerializeField] private Transform playerTransform;
+        [SerializeField] private float attackDistance;
+    
+        private IFollow _follow;
 
-    private void Update()
-    {
-        if (Vector3.Distance(transform.position, playerTransform.position) <= attackDistance)
+        private void Start()
         {
-            print("ATTACKING!");
+            _follow = GetComponent<IFollow>();
         }
-        else
+
+        private void Update()
         {
-            _follow.FollowTarget(playerTransform);
+            if (Vector3.Distance(transform.position, playerTransform.position) <= attackDistance)
+            {
+                if (_follow.IsFollowing)
+                {
+                    _follow.StopFollowTarget();
+                }
+                print("ATTACKING!");
+            }
+            else
+            { 
+                _follow.FollowTarget(playerTransform);
+            }
         }
     }
 }

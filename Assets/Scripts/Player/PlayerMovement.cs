@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Shared;
 using Shared.Collision;
 using UnityEngine;
@@ -14,15 +15,20 @@ namespace Player
         [SerializeField] private CeilingChecker ceilingChecker;
         [SerializeField] private float gravity = 5;
         [SerializeField] private Flipper flipper;
-        [SerializeField] private Dash dash;
+        [SerializeField] [CanBeNull] private Dash dash;
     
         private float _currentMovementXInput;
         private float _movementY;
         private bool _jumpAfterDash;
-
+        private bool _canDash = false;
         private void Start()
         {
-            dash.OnDashEnd += OnDashEnd;
+            _canDash = dash != null;
+
+            if (_canDash)
+            {
+                dash!.OnDashEnd += OnDashEnd;
+            }
         }
 
         void Update()
@@ -37,7 +43,7 @@ namespace Player
         
             if (!groundChecker.isGrounded)
             {
-                if (dash.isDashing)
+                if (_canDash && dash!.isDashing)
                 {
                     _movementY = 0f;
                 }
@@ -57,7 +63,7 @@ namespace Player
             var newPositionX = _currentMovementXInput;
             var newPositionY = _movementY;
         
-            if (dash.isDashing)
+            if (_canDash && dash!.isDashing)
             {
                 var dashSpeed = dash.dashSpeed;
                 newPositionX = flipper.facingRight ? dashSpeed : -dashSpeed;
@@ -76,7 +82,7 @@ namespace Player
         {
             _currentMovementXInput = movementInput;
         
-            if (!dash.isDashing && flipper.ShouldFlip(_currentMovementXInput))
+            if ((!_canDash || !dash!.isDashing) && flipper.ShouldFlip(_currentMovementXInput))
             {
                 flipper.Flip();
             }
@@ -86,7 +92,7 @@ namespace Player
         {
             if (groundChecker.isGrounded)
             {
-                if (dash.isDashing)
+                if (_canDash && dash!.isDashing)
                 {
                     _jumpAfterDash = true;
                     return;
