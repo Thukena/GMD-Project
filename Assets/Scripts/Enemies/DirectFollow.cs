@@ -1,3 +1,4 @@
+using System;
 using Player;
 using Shared.Collision;
 using UnityEngine;
@@ -20,7 +21,14 @@ namespace Enemies
                 playerMovement.Jump();
             }
             
-            playerMovement.Move(target.position.x > transform.position.x ? 1 : -1);
+            if (!(Math.Abs(target.position.x - transform.position.x) < 0.01))
+            {
+                playerMovement.Move(target.position.x > transform.position.x ? 1 : -1);
+            }
+            else if (IsFollowing)
+            {
+               StopFollowTarget();
+            }
         }
 
         public void StopFollowTarget()
