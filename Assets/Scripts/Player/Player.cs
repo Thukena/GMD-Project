@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +12,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public Flipper flipper;
     public Dash dash;
-
+    
     private float _currentMovementXInput;
     private float _movementY;
     private bool _jumpAfterDash;
@@ -68,6 +67,7 @@ public class Player : MonoBehaviour
         {
             newPositionX = 0f;
         }
+        
         transform.Translate(new Vector3(newPositionX * speed, newPositionY, 0f) * Time.deltaTime);
     }
 
@@ -136,5 +136,4 @@ public class Player : MonoBehaviour
             _jumpAfterDash = false;
         }
     }
-    
 }
