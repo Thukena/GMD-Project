@@ -1,3 +1,5 @@
+using Shared;
+using Shared.Collision;
 using UnityEngine;
 
 namespace Player
@@ -25,7 +27,7 @@ namespace Player
 
         void Update()
         {
-            if (ceilingChecker.IsTouchingCeiling)
+            if (ceilingChecker.isTouchingCeiling)
             {
                 if (_movementY > 0)
                 {

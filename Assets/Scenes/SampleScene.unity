@@ -684,8 +684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7785b6dd36fb04b8fa19f9a2acd0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTransform: {fileID: 124729285}
   isGrounded: 0
+  parentTransform: {fileID: 124729285}
   collisionChecker: {fileID: 2109555133}
 --- !u!114 &124729290
 MonoBehaviour:
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93415dd080b3f2408f18b53f715bba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsTouchingCeiling: 0
+  isTouchingCeiling: 0
   parentTransform: {fileID: 124729285}
   collisionChecker: {fileID: 1794835736}
 --- !u!95 &124729291
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentTransform: {fileID: 124729285}
   collisionChecker: {fileID: 1142039084}
-  Flipper: {fileID: 124729292}
+  flipper: {fileID: 124729292}
   isTouchingWall: 0
 --- !u!114 &124729294
 MonoBehaviour:
@@ -765,7 +765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDashing: 0
-  canDash: 1
   dashSpeed: 5
   dashDuration: 0.2
   dashCooldown: 0.5
