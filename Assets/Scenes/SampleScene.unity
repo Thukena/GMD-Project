@@ -223,7 +223,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31195832}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -421,12 +421,13 @@ GameObject:
   - component: {fileID: 124729286}
   - component: {fileID: 124729291}
   - component: {fileID: 124729288}
-  - component: {fileID: 124729287}
   - component: {fileID: 124729289}
   - component: {fileID: 124729290}
   - component: {fileID: 124729292}
   - component: {fileID: 124729293}
   - component: {fileID: 124729294}
+  - component: {fileID: 124729296}
+  - component: {fileID: 124729295}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -577,27 +578,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &124729287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124729282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c760efe989a775c47845cc4820fd8cf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  jumpHeight: 20
-  groundChecker: {fileID: 124729289}
-  wallChecker: {fileID: 124729293}
-  ceilingChecker: {fileID: 124729290}
-  gravity: 5
-  animator: {fileID: 124729291}
-  flipper: {fileID: 124729292}
-  dash: {fileID: 124729294}
 --- !u!114 &124729288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,7 +605,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 124729287}
+      - m_Target: {fileID: 124729295}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -641,7 +621,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 124729287}
+      - m_Target: {fileID: 124729295}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
@@ -657,7 +637,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/z]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 124729287}
+      - m_Target: {fileID: 124729295}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
@@ -673,7 +653,7 @@ MonoBehaviour:
     m_ActionName: Player/Attack[/Keyboard/x]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 124729287}
+      - m_Target: {fileID: 124729295}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnDash
         m_Mode: 0
@@ -789,6 +769,40 @@ MonoBehaviour:
   dashSpeed: 5
   dashDuration: 0.2
   dashCooldown: 0.5
+--- !u!114 &124729295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124729282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c760efe989a775c47845cc4820fd8cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 124729291}
+  playerMovement: {fileID: 124729296}
+--- !u!114 &124729296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124729282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b17efbc08e0d34286f842de0f47515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  jumpHeight: 20
+  groundChecker: {fileID: 124729289}
+  wallChecker: {fileID: 124729293}
+  ceilingChecker: {fileID: 124729290}
+  gravity: 5
+  flipper: {fileID: 124729292}
+  dash: {fileID: 124729294}
 --- !u!1 &310568935
 GameObject:
   m_ObjectHideFlags: 0
