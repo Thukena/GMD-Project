@@ -29,8 +29,12 @@ namespace Player
         {
             if (context.performed)
             {
-                print("ATTACK");
-                animator.SetTrigger("Attack"); 
+                AnimatorStateInfo currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                if (!currentAnimatorStateInfo.IsName("Attack"))
+                {
+                    print("ATTACK");
+                    animator.SetTrigger("Attack");
+                }
             }
         }
     
