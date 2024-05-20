@@ -7,7 +7,8 @@ namespace Enemies
     
         [SerializeField] private Transform playerTransform;
         [SerializeField] private float attackDistance;
-    
+        [SerializeField] private Animator animator;
+
         private IFollow _follow;
 
         private void Start()
@@ -23,7 +24,12 @@ namespace Enemies
                 {
                     _follow.StopFollowTarget();
                 }
-                print("ATTACKING!");
+
+                AnimatorStateInfo currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                if (!currentAnimatorStateInfo.IsName("Attack"))
+                {
+                    animator.SetTrigger("Attack");
+                }          
             }
             else
             { 

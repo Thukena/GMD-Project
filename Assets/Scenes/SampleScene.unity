@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 31195841}
   - component: {fileID: 31195840}
   - component: {fileID: 31195839}
+  - component: {fileID: 31195845}
   m_Layer: 0
   m_Name: EvilSamu
   m_TagString: Untagged
@@ -218,7 +219,7 @@ Transform:
   - {fileID: 60244397}
   - {fileID: 1344232738}
   - {fileID: 1062793191}
-  m_Father: {fileID: 310568936}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &31195835
 Rigidbody2D:
@@ -306,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 124729285}
   attackDistance: 2
+  animator: {fileID: 31195845}
 --- !u!114 &31195839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +401,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 31195843}
   wallChecker: {fileID: 31195842}
+--- !u!95 &31195845
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31195832}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6f8d8745faea6743acd47ea9178de99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &60244396
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +943,6 @@ Transform:
   - {fileID: 1875331246}
   - {fileID: 1336144490}
   - {fileID: 1991090179}
-  - {fileID: 31195834}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -2133,3 +2155,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 124729285}
   - {fileID: 310568936}
+  - {fileID: 31195834}
