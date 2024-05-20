@@ -1,3 +1,4 @@
+using Shared;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ namespace Player
     {
         [SerializeField] private Animator animator;
         [SerializeField] private PlayerMovement playerMovement;
+        [SerializeField] private AttackController attackController;
     
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -33,7 +35,12 @@ namespace Player
                 if (!currentAnimatorStateInfo.IsName("Attack"))
                 {
                     print("ATTACK");
+                    float attackAnimationDuration = 0.5f; // animation duration is currently 0.5 seconds
+                    float newSpeed = attackAnimationDuration / attackController.attackDuration;
+                    
+                    animator.SetFloat("SpeedMultiplier", newSpeed); //Use SpeedMultiplier to adjust duration of animation to attackDuration
                     animator.SetTrigger("Attack");
+                    attackController.Attack();
                 }
             }
         }
