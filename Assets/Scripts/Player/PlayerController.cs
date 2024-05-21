@@ -6,7 +6,7 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private Animator animator;
+        [SerializeField] private AnimationHandler animationHandler;
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private AttackController attackController;
     
@@ -29,19 +29,10 @@ namespace Player
     
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !animationHandler.IsAttacking())
             {
-                AnimatorStateInfo currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-                if (!currentAnimatorStateInfo.IsName("Attack"))
-                {
-                    print("ATTACK");
-                    float attackAnimationDuration = 0.5f; // animation duration is currently 0.5 seconds
-                    float newSpeed = attackAnimationDuration / attackController.attackDuration;
-                    
-                    animator.SetFloat("SpeedMultiplier", newSpeed); //Use SpeedMultiplier to adjust duration of animation to attackDuration
-                    animator.SetTrigger("Attack");
-                    attackController.Attack();
-                }
+                animationHandler.StartAttackAnimation(attackController.attackDuration);
+                attackController.Attack();
             }
         }
     
