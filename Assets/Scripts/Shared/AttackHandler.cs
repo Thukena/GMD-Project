@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace Shared
 {
-    public class AttackController : MonoBehaviour
+    public class AttackHandler : MonoBehaviour
     {
         public float attackDuration;
+        public bool isAttacking = false;
         [SerializeField] private int damage;
         [SerializeField] private string targetTag;
         [SerializeField] BoxCollider2D boxCollider;
@@ -16,6 +17,7 @@ namespace Shared
         
         public void Attack()
         {
+            isAttacking = true;
             _hitTargets.Clear(); 
             StartCoroutine(PerformAttack());
         }
@@ -41,6 +43,10 @@ namespace Shared
                 elapsedTime += checkInterval;
                 yield return new WaitForSeconds(checkInterval);
             }
+
+            print("DONE ATTACKING");
+
+            isAttacking = false;
         }
     }
 }

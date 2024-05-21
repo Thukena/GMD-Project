@@ -9,7 +9,7 @@ namespace Enemies
         [SerializeField] private Transform playerTransform;
         [SerializeField] private float attackDistance;
         [SerializeField] private AnimationHandler animationHandler;
-        [SerializeField] private AttackController attackController;
+        [SerializeField] private AttackHandler attackHandler;
 
         private IFollow _follow;
 
@@ -27,10 +27,10 @@ namespace Enemies
                     _follow.StopFollowTarget();
                 }
 
-                if (!animationHandler.IsAttacking())
+                if (!attackHandler.isAttacking)
                 {
-                    animationHandler.StartAttackAnimation(attackController.attackDuration);
-                    attackController.Attack();
+                    animationHandler.StartAttackAnimation(attackHandler.attackDuration);
+                    attackHandler.Attack();
                 }
             }
             else

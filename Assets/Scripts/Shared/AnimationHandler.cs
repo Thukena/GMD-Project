@@ -8,11 +8,6 @@ namespace Shared
         [SerializeField] private Animator animator;
         [SerializeField] private float attackAnimationDuration;
         
-        public bool IsAttacking()
-        {
-            return animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
-        }
-        
         public void StartAttackAnimation(float attackDuration)
         {
             float newSpeed = attackAnimationDuration / attackDuration;

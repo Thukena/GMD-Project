@@ -8,7 +8,7 @@ namespace Player
     {
         [SerializeField] private AnimationHandler animationHandler;
         [SerializeField] private PlayerMovement playerMovement;
-        [SerializeField] private AttackController attackController;
+        [SerializeField] private AttackHandler attackHandler;
     
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -29,10 +29,10 @@ namespace Player
     
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if (context.performed && !animationHandler.IsAttacking())
+            if (context.performed && !attackHandler.isAttacking)
             {
-                animationHandler.StartAttackAnimation(attackController.attackDuration);
-                attackController.Attack();
+                animationHandler.StartAttackAnimation(attackHandler.attackDuration);
+                attackHandler.Attack();
             }
         }
     
