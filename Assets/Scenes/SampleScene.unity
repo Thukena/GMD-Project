@@ -311,7 +311,7 @@ MonoBehaviour:
   playerTransform: {fileID: 124729285}
   attackDistance: 2
   animationHandler: {fileID: 31195848}
-  attackController: {fileID: 31195847}
+  attackHandler: {fileID: 31195847}
 --- !u!114 &31195839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
   isAttacking: 0
   damage: 5
   targetTag: Player
-  boxCollider: {fileID: 1025745864}
+  boxCollider: {fileID: 1062793194}
 --- !u!114 &31195848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationHandler: {fileID: 124729299}
   playerMovement: {fileID: 124729296}
-  attackController: {fileID: 124729297}
+  attackHandler: {fileID: 124729297}
 --- !u!114 &124729296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,7 +1528,6 @@ GameObject:
   - component: {fileID: 1025745862}
   - component: {fileID: 1025745861}
   - component: {fileID: 1025745864}
-  - component: {fileID: 1025745863}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -1603,33 +1602,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 124729285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
---- !u!50 &1025745863
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025745859}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &1025745864
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1659,7 +1631,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.3, y: 0}
@@ -1685,6 +1657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1062793191}
   - component: {fileID: 1062793192}
+  - component: {fileID: 1062793194}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -1700,7 +1673,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062793190}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0.96, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1759,6 +1732,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1062793194
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062793190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.3, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 0.6666667}
+    newSize: {x: 3, y: 0.6666667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3, y: 0.3}
+  m_EdgeRadius: 0
 --- !u!1 &1142039080
 GameObject:
   m_ObjectHideFlags: 0

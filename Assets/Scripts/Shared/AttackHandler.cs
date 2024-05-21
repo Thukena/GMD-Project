@@ -25,11 +25,11 @@ namespace Shared
         private IEnumerator PerformAttack()
         {
             var elapsedTime = 0f;
-            const float checkInterval = 0.1f;
+            const float checkInterval = 0.01f;
 
             while (elapsedTime < attackDuration)
             {
-                Collider2D[] hits = Physics2D.OverlapBoxAll(boxCollider.bounds.center, boxCollider.size, 0);
+                Collider2D[] hits = Physics2D.OverlapBoxAll(boxCollider.bounds.center, boxCollider.size, boxCollider.transform.rotation.eulerAngles.z);
                 foreach (var hit in hits)
                 {
                     if (hit.CompareTag(targetTag) && !_hitTargets.Contains(hit))
