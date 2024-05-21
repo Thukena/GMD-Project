@@ -29,7 +29,7 @@ namespace Player
     
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if (context.performed && !attackHandler.isAttacking)
+            if (context.performed && attackHandler.canAttack)
             {
                 animationHandler.StartAttackAnimation(attackHandler.attackDuration);
                 attackHandler.Attack();

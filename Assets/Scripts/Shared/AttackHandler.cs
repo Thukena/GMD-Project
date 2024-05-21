@@ -8,8 +8,9 @@ namespace Shared
     public class AttackHandler : MonoBehaviour
     {
         public float attackDuration;
-        public bool isAttacking = false;
+        public bool canAttack = true;
         [SerializeField] private int damage;
+        [SerializeField] private float attackCooldown;
         [SerializeField] private string targetTag;
         [SerializeField] BoxCollider2D boxCollider;
         
@@ -17,7 +18,7 @@ namespace Shared
         
         public void Attack()
         {
-            isAttacking = true;
+            canAttack = false;
             _hitTargets.Clear(); 
             StartCoroutine(PerformAttack());
         }
@@ -44,9 +45,8 @@ namespace Shared
                 yield return new WaitForSeconds(checkInterval);
             }
 
-            print("DONE ATTACKING");
-
-            isAttacking = false;
+            yield return new WaitForSeconds(attackCooldown);
+            canAttack = true;
         }
     }
 }

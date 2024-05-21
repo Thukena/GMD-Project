@@ -20,6 +20,8 @@ namespace Enemies
 
         private void Update()
         {
+            var canAttack = attackHandler.canAttack;
+            
             if (Vector2.Distance(transform.position, playerTransform.position) <= attackDistance)
             {
                 if (_follow.IsFollowing)
@@ -27,7 +29,7 @@ namespace Enemies
                     _follow.StopFollowTarget();
                 }
 
-                if (!attackHandler.isAttacking)
+                if (canAttack)
                 {
                     animationHandler.StartAttackAnimation(attackHandler.attackDuration);
                     attackHandler.Attack();
@@ -35,7 +37,7 @@ namespace Enemies
             }
             else
             {
-                if (!attackHandler.isAttacking)
+                if (canAttack)
                 {
                     _follow.FollowTarget(playerTransform);
                 }
