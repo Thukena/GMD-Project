@@ -1,3 +1,4 @@
+using Shared;
 using UnityEngine;
 
 namespace Enemies
@@ -7,7 +8,8 @@ namespace Enemies
     
         [SerializeField] private Transform playerTransform;
         [SerializeField] private float attackDistance;
-        [SerializeField] private Animator animator;
+        [SerializeField] private AnimationHandler animationHandler;
+        [SerializeField] private AttackController attackController;
 
         private IFollow _follow;
 
@@ -18,18 +20,18 @@ namespace Enemies
 
         private void Update()
         {
-            if (Vector3.Distance(transform.position, playerTransform.position) <= attackDistance)
+            if (Vector2.Distance(transform.position, playerTransform.position) <= attackDistance)
             {
                 if (_follow.IsFollowing)
                 {
                     _follow.StopFollowTarget();
                 }
 
-                AnimatorStateInfo currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-                if (!currentAnimatorStateInfo.IsName("Attack"))
+                if (!animationHandler.IsAttacking())
                 {
-                    animator.SetTrigger("Attack");
-                }          
+                    animationHandler.StartAttackAnimation(attackController.attackDuration);
+                    attackController.Attack();
+                }
             }
             else
             { 
