@@ -43,7 +43,14 @@ namespace Player
             float timer = 0;
             while (timer < actualKnockBackDuration)
             {
-                targetRigidBody.velocity = knockBackDirection * knockBackSpeed;
+                var targetWidth = Mathf.Abs(transform.localScale.x);
+                RaycastHit2D hit = Physics2D.Raycast(targetRigidBody.position, knockBackDirection, targetWidth / 2, LayerMask.GetMask("Ground"));
+                if (hit.collider != null)
+                {
+                    targetRigidBody.position = hit.point - knockBackDirection * targetWidth / 2; //Move to edge of collision +- half target width
+                    break;
+                }
+                targetRigidBody.position += knockBackDirection * (knockBackSpeed * Time.deltaTime);
                 timer += Time.deltaTime;
                 yield return null;
             }
