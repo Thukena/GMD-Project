@@ -10,6 +10,7 @@ namespace Enemies
         [SerializeField] private float attackDistance;
         [SerializeField] private AnimationHandler animationHandler;
         [SerializeField] private AttackHandler attackHandler;
+        [SerializeField] private Health health;
 
         private IFollow _follow;
 
@@ -20,15 +21,18 @@ namespace Enemies
 
         private void Update()
         {
+            if (health.isStunned)
+            {
+                _follow.StopFollowTarget();
+                return;
+            }
+            
             var canAttack = attackHandler.canAttack;
             
             if (Vector2.Distance(transform.position, playerTransform.position) <= attackDistance)
             {
-                if (_follow.IsFollowing)
-                {
-                    _follow.StopFollowTarget();
-                }
-
+                _follow.StopFollowTarget();
+                
                 if (canAttack)
                 {
                     animationHandler.StartAttackAnimation(attackHandler.attackDuration);

@@ -69,6 +69,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: knockBack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: targetTag
       value: Player
       objectReference: {fileID: 0}
@@ -77,16 +81,38 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: attackDuration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: knockBackHandler
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: isStunned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: maxHealth
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: stunResistence
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: knockBackResistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 946385900617786549, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
     - {fileID: 4203358332605474249, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+    - {fileID: 723343035700530024, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+    - {fileID: 6315777213375629659, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -97,6 +123,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1237449328953646668}
   m_SourcePrefab: {fileID: 100100000, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+--- !u!114 &556538202915481395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+  m_PrefabInstance: {fileID: 5871413830326224262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909912000183570807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823736e2cdbf0fa458dac701fc7647eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5214436681830089628 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1812159323369293338, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
@@ -129,6 +166,7 @@ MonoBehaviour:
   attackDistance: 2
   animationHandler: {fileID: 7312740375505330339}
   attackHandler: {fileID: 7855080241206650493}
+  health: {fileID: 556538202915481395}
 --- !u!114 &1237449328953646668
 MonoBehaviour:
   m_ObjectHideFlags: 0

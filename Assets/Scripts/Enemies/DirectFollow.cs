@@ -33,8 +33,11 @@ namespace Enemies
 
         public void StopFollowTarget()
         {
-            playerMovement.Move(0);
-            IsFollowing = false;
+            if (IsFollowing)
+            {
+                playerMovement.Move(0);
+                IsFollowing = false;
+            }
         }
     }
 }

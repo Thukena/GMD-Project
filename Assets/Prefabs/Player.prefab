@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 4357701142141395963}
   - component: {fileID: 6251642010812228277}
   - component: {fileID: 3749072304539165989}
+  - component: {fileID: 6315777213375629659}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -415,9 +416,10 @@ MonoBehaviour:
   attackDuration: 0.2
   canAttack: 1
   damage: 5
-  attackDelay: 0.5
+  attackCooldown: 0.5
   targetTag: Enemy
   boxCollider: {fileID: 807697053250592778}
+  knockBackHandler: {fileID: 6315777213375629659}
 --- !u!114 &6251642010812228277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +432,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823736e2cdbf0fa458dac701fc7647eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  knockBackResistance: 0
+  stunResistence: 0
+  isStunned: 0
+  maxHealth: 100
   greenHealthBar: {fileID: 6316987451258085419}
 --- !u!114 &3749072304539165989
 MonoBehaviour:
@@ -446,6 +451,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8585029978559116650}
   attackAnimationDuration: 0.5
+--- !u!114 &6315777213375629659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053705560472392945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c4d230fe9aa9144aeebea2d7fe1ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackSpeed: 55
+  knockBackDuration: 50
+  stunDurationAfterKnockBack: 50
 --- !u!1 &3855803523410479266
 GameObject:
   m_ObjectHideFlags: 0

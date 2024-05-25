@@ -5,6 +5,10 @@ namespace Shared
 {
     public class Health : MonoBehaviour
     {
+        public float knockBackResistance;
+        public float stunResistence;
+        public bool isStunned;
+        public bool isDead = false;
         [SerializeField] private int maxHealth;
         [SerializeField] private Image greenHealthBar;
         private int currentHealth;
@@ -22,6 +26,7 @@ namespace Shared
             
             if (currentHealth <= 0)
             {
+                isDead = true;
                 print("DEAD");
                 Destroy(gameObject);
             }

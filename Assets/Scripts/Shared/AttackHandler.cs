@@ -1,6 +1,6 @@
-
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 namespace Shared
@@ -13,9 +13,16 @@ namespace Shared
         [SerializeField] private float attackCooldown;
         [SerializeField] private string targetTag;
         [SerializeField] BoxCollider2D boxCollider;
-        
+        [SerializeField] private KnockBackHandler knockBackHandler;
+
+        private bool _canKnockBack;
         private readonly HashSet<Collider2D> _hitTargets = new();
-        
+
+        private void Start()
+        {
+            _canKnockBack = knockBackHandler != null;
+        }
+
         public void Attack()
         {
             canAttack = false;
@@ -36,8 +43,12 @@ namespace Shared
                     if (hit.CompareTag(targetTag) && !_hitTargets.Contains(hit))
                     {
                         _hitTargets.Add(hit);
-                        print(hit.name + " WAS ATTACKED");
-                        hit.GetComponent<Health>().TakeDamage(damage);
+                        Health healthComponent = hit.GetComponent<Health>();
+                        healthComponent.TakeDamage(damage);
+                        if (_canKnockBack && healthComponent.isDead == false)
+                        {
+                            knockBackHandler.KnockBack(healthComponent);
+                        }
                     }
                 }
 
