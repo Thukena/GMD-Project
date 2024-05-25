@@ -105,6 +105,14 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: healthRegenRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: healthRegenAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: knockBackResistance
       value: 20
       objectReference: {fileID: 0}

@@ -1048,6 +1048,14 @@ PrefabInstance:
       propertyPath: attackCooldown
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: healthRegenRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: healthRegenAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6315777213375629659, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: knockBackSpeed
       value: 5

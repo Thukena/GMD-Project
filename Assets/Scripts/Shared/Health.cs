@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,27 +13,58 @@ namespace Shared
         public bool isStunned;
         public bool isDead = false;
         [SerializeField] private int maxHealth;
+        [SerializeField] private float healthRegenRate;
+        [SerializeField] private int healthRegenAmount;
         [SerializeField] private Image greenHealthBar;
-        private int currentHealth;
+        private int _currentHealth;
+        private bool IsFullHealth => _currentHealth == maxHealth;
 
         private void Start()
         {
-            currentHealth = maxHealth;
+            _currentHealth = maxHealth;
             greenHealthBar.fillAmount = 1f;
+            if (healthRegenAmount > 0)
+            {
+                StartCoroutine(RegenHealth());
+            }
         }
 
         public void TakeDamage(int damage)
         {
-            currentHealth -= damage;
-            greenHealthBar.fillAmount = (float)currentHealth / maxHealth;
-            
-            if (currentHealth <= 0)
+            UpdateCurrentHealth(_currentHealth - damage);
+
+            if (_currentHealth <= 0)
             {
                 isDead = true;
                 OnDeath?.Invoke();
                 print("DEAD");
                 Destroy(gameObject);
             }
+        }
+
+        private IEnumerator RegenHealth()
+        {
+            while (!isDead)
+            {
+                if (!IsFullHealth)
+                {
+                    UpdateCurrentHealth(_currentHealth + healthRegenAmount);
+                }
+            
+                yield return new WaitForSeconds(healthRegenRate);
+            }
+        }
+
+        private void UpdateCurrentHealth(int newCurrentHealthValue)
+        {
+            if (_currentHealth > maxHealth)
+            {
+                newCurrentHealthValue = maxHealth;
+            }
+
+            _currentHealth = newCurrentHealthValue;
+            
+            greenHealthBar.fillAmount = (float)_currentHealth / maxHealth;
         }
     }
 }
