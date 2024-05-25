@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Shared;
 using UnityEngine;
 
@@ -10,10 +11,20 @@ namespace Player
         [SerializeField] private float knockBackDuration;
         [SerializeField] private float stunDurationAfterKnockBack; 
 
+        private readonly Dictionary<Health, Coroutine> _activeKnockBacks = new ();
 
         public void KnockBack(Health targetHealth)
         {
-            StartCoroutine(KnockBackCoroutine(targetHealth));
+            var knockBackCoroutine = StartCoroutine(KnockBackCoroutine(targetHealth));
+            _activeKnockBacks[targetHealth] = knockBackCoroutine;
+            targetHealth.OnDeath += () =>
+            {
+                if (_activeKnockBacks.TryGetValue(targetHealth, out var coroutine))
+                {
+                    StopCoroutine(coroutine);
+                    _activeKnockBacks.Remove(targetHealth);
+                }
+            };
         }
 
         private IEnumerator KnockBackCoroutine(Health targetHealth)
@@ -42,6 +53,7 @@ namespace Player
             yield return new WaitForSeconds(ApplyResistance(stunDurationAfterKnockBack, targetHealth.stunResistence));
 
             targetHealth.isStunned = false;
+            _activeKnockBacks.Remove(targetHealth);
         }
         
         private static float ApplyResistance(float duration, float resistance)
