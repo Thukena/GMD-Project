@@ -35,7 +35,7 @@ namespace Player
             
             targetHealth.isStunned = true;  
 
-            var knockBackDirection = (targetHealth.transform.position - transform.position).normalized;
+            var knockBackDirection = new Vector2(targetHealth.transform.position.x - transform.position.x, 0).normalized;
             var targetRigidBody = targetHealth.GetComponent<Rigidbody2D>();
 
             var actualKnockBackDuration = ApplyResistance(knockBackDuration, knockBackResistance);
