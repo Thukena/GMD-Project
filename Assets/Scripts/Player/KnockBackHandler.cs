@@ -43,7 +43,7 @@ namespace Player
             float timer = 0;
             while (timer < actualKnockBackDuration)
             {
-                var targetWidth = Mathf.Abs(transform.localScale.x);
+                var targetWidth = targetHealth.GetComponent<Renderer>().bounds.size.x;
                 RaycastHit2D hit = Physics2D.Raycast(targetRigidBody.position, knockBackDirection, targetWidth / 2, LayerMask.GetMask("Ground"));
                 if (hit.collider != null)
                 {
