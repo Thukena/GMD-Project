@@ -1,11 +1,9 @@
-using JetBrains.Annotations;
-using Shared;
 using Shared.Collision;
 using UnityEngine;
 
-namespace Player
+namespace Shared
 {
-    public class PlayerMovement : MonoBehaviour
+    public class BasicMovement : MonoBehaviour
     {
 
         public bool isAffectedByGravity = true; 

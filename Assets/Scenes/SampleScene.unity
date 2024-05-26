@@ -1048,6 +1048,10 @@ PrefabInstance:
       propertyPath: dash
       value: 
       objectReference: {fileID: 124729292}
+    - target: {fileID: 4203358332605474249, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: basicMovement
+      value: 
+      objectReference: {fileID: 124729291}
     - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: attackCooldown
       value: 0.1

@@ -1,5 +1,5 @@
 using System;
-using Player;
+using Shared;
 using Shared.Collision;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace Enemies
 {
     public class DirectFollow : MonoBehaviour, IFollow
     {
-        [SerializeField] private PlayerMovement playerMovement;
+        [SerializeField] private BasicMovement basicMovement;
         [SerializeField] private WallChecker wallChecker;
 
         public bool IsFollowing { get; set; }
@@ -18,12 +18,12 @@ namespace Enemies
             
             if (wallChecker.isTouchingWall)
             {
-                playerMovement.Jump();
+                basicMovement.Jump();
             }
             
             if (!(Math.Abs(target.position.x - transform.position.x) < 0.01))
             {
-                playerMovement.Move(target.position.x > transform.position.x ? 1 : -1);
+                basicMovement.Move(target.position.x > transform.position.x ? 1 : -1);
             }
             else if (IsFollowing)
             {
@@ -35,7 +35,7 @@ namespace Enemies
         {
             if (IsFollowing)
             {
-                playerMovement.Move(0);
+                basicMovement.Move(0);
                 IsFollowing = false;
             }
         }

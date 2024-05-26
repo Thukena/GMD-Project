@@ -7,7 +7,7 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private AnimationHandler animationHandler;
-        [SerializeField] private PlayerMovement playerMovement;
+        [SerializeField] private BasicMovement basicMovement;
         [SerializeField] private AttackHandler attackHandler;
         [SerializeField] private Dash dash;
         private float _currentMovementXInput;
@@ -26,7 +26,7 @@ namespace Player
 
                 if (!dash.isDashing)
                 {
-                    playerMovement.Move(_currentMovementXInput);
+                    basicMovement.Move(_currentMovementXInput);
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace Player
                 else
                 {
                     print("JUMP");
-                    playerMovement.Jump();
+                    basicMovement.Jump();
                 }
             }
         }
@@ -64,20 +64,20 @@ namespace Player
                 dash.TryDash();
                 if (dash.isDashing)
                 {
-                    playerMovement.isAffectedByGravity = false;
-                    playerMovement.Move(0f);
+                    basicMovement.isAffectedByGravity = false;
+                    basicMovement.Move(0f);
                 }
             }
         }
 
         private void OnDashEnd()
         {
-            playerMovement.isAffectedByGravity = true;   
-            playerMovement.Move(_currentMovementXInput);
+            basicMovement.isAffectedByGravity = true;   
+            basicMovement.Move(_currentMovementXInput);
             
             if (_jumpAfterDash)
             {
-                playerMovement.Jump();
+                basicMovement.Jump();
                 _jumpAfterDash = false;
             }
         }

@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f54cdf8c0242aa468841cefa078e2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 9114122087434309136}
+  basicMovement: {fileID: 9114122087434309136}
   wallChecker: {fileID: 5214436681830089628}
 --- !u!114 &7312740375505330339 stripped
 MonoBehaviour:

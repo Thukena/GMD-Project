@@ -41,10 +41,7 @@ namespace Enemies
             }
             else
             {
-                if (canAttack)
-                {
-                    _follow.FollowTarget(playerTransform);
-                }
+                _follow.FollowTarget(playerTransform);
             }
         }
     }
