@@ -11,22 +11,25 @@ namespace Enemies
         [SerializeField] private WallChecker wallChecker;
         [SerializeField] private BasicJump basicJump;
 
-        public bool IsFollowing { get; set; }
+        private bool _isFollowing;
 
         public void FollowTarget(Transform target)
         {
-            IsFollowing = true;
+            _isFollowing = true;
             
             if (wallChecker.isTouchingWall)
             {
                 basicJump.Jump();
             }
+
+            var transformPositionX = target.position.x;
             
-            if (!(Math.Abs(target.position.x - transform.position.x) < 0.01))
+            //Prevent moving when standing directly below or above the player
+            if (!(Math.Abs(transformPositionX - transform.position.x) < 0.01))
             {
-                basicMovement.Move(target.position.x > transform.position.x ? 1 : -1);
+                basicMovement.Move(transformPositionX > transform.position.x ? 1 : -1);
             }
-            else if (IsFollowing)
+            else if (_isFollowing)
             {
                StopFollowTarget();
             }
@@ -34,10 +37,10 @@ namespace Enemies
 
         public void StopFollowTarget()
         {
-            if (IsFollowing)
+            if (_isFollowing)
             {
                 basicMovement.Move(0);
-                IsFollowing = false;
+                _isFollowing = false;
             }
         }
     }
