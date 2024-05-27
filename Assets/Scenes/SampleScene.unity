@@ -1180,11 +1180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1556622398067608217, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1556622398067608217, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3.65
       objectReference: {fileID: 0}
     - target: {fileID: 1556622398067608217, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1244,7 +1244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6315777213375629659, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: knockBackDuration
-      value: 0.5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6315777213375629659, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: stunDurationAfterKnockBack

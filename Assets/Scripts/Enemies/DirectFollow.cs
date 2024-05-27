@@ -9,6 +9,7 @@ namespace Enemies
     {
         [SerializeField] private BasicMovement basicMovement;
         [SerializeField] private WallChecker wallChecker;
+        [SerializeField] private BasicJump basicJump;
 
         public bool IsFollowing { get; set; }
 
@@ -18,7 +19,7 @@ namespace Enemies
             
             if (wallChecker.isTouchingWall)
             {
-                basicMovement.Jump();
+                basicJump.Jump();
             }
             
             if (!(Math.Abs(target.position.x - transform.position.x) < 0.01))

@@ -114,6 +114,8 @@ GameObject:
   - component: {fileID: 8156241453697978597}
   - component: {fileID: 714590669416008314}
   - component: {fileID: 8488488705145348388}
+  - component: {fileID: 6734793301747320578}
+  - component: {fileID: -3817137728117985670}
   m_Layer: 0
   m_Name: Moodswinger
   m_TagString: Enemy
@@ -345,13 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b17efbc08e0d34286f842de0f47515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAffectedByGravity: 1
   speed: 5
-  jumpHeight: 20
-  groundChecker: {fileID: 523106110626236026}
   wallChecker: {fileID: 3563679072876383000}
-  ceilingChecker: {fileID: 714590669416008314}
-  gravity: 5
   flipper: {fileID: 4939605189315517186}
 --- !u!114 &8156241453697978597
 MonoBehaviour:
@@ -367,6 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicMovement: {fileID: 9119876897688598453}
   wallChecker: {fileID: 3563679072876383000}
+  basicJump: {fileID: -3817137728117985670}
 --- !u!114 &714590669416008314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +395,38 @@ MonoBehaviour:
   currentState: 0
   health: {fileID: 822538736875779681}
   playerTransform: {fileID: 0}
+--- !u!114 &6734793301747320578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253732417335450912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b730b230da99d124fbace3ebdf1112c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityStrength: 5
+  ceilingChecker: {fileID: 714590669416008314}
+  groundChecker: {fileID: 523106110626236026}
+  verticalMovement: 0
+  isAffectedByGravity: 1
+--- !u!114 &-3817137728117985670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253732417335450912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43da30e8839ff3842b19290de4867b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundChecker: {fileID: 523106110626236026}
+  gravityHandler: {fileID: 6734793301747320578}
+  jumpHeight: 0
 --- !u!1 &1838390183056815964
 GameObject:
   m_ObjectHideFlags: 0

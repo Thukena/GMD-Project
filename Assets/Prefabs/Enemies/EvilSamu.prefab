@@ -116,6 +116,10 @@ PrefabInstance:
       propertyPath: knockBackResistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6510533271030685582, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: wallChecker
+      value: 
+      objectReference: {fileID: 5214436681830089628}
     m_RemovedComponents:
     - {fileID: 946385900617786549, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
     - {fileID: 4203358332605474249, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
@@ -140,6 +144,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 823736e2cdbf0fa458dac701fc7647eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &814346787300219079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6500479679679143233, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+  m_PrefabInstance: {fileID: 5871413830326224262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909912000183570807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43da30e8839ff3842b19290de4867b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5214436681830089628 stripped
@@ -189,6 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicMovement: {fileID: 9114122087434309136}
   wallChecker: {fileID: 5214436681830089628}
+  basicJump: {fileID: 814346787300219079}
 --- !u!114 &7312740375505330339 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3749072304539165989, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}

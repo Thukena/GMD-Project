@@ -10,6 +10,9 @@ namespace Player
         [SerializeField] private BasicMovement basicMovement;
         [SerializeField] private AttackHandler attackHandler;
         [SerializeField] private Dash dash;
+        [SerializeField] private BasicJump basicJump;
+        [SerializeField] private GravityHandler gravityHandler;
+
         private float _currentMovementXInput;
         private bool _jumpAfterDash;
         
@@ -42,7 +45,7 @@ namespace Player
                 else
                 {
                     print("JUMP");
-                    basicMovement.Jump();
+                    basicJump.Jump();
                 }
             }
         }
@@ -64,7 +67,7 @@ namespace Player
                 dash.TryDash();
                 if (dash.isDashing)
                 {
-                    basicMovement.isAffectedByGravity = false;
+                    gravityHandler.isAffectedByGravity = false;
                     basicMovement.Move(0f);
                 }
             }
@@ -72,12 +75,12 @@ namespace Player
 
         private void OnDashEnd()
         {
-            basicMovement.isAffectedByGravity = true;   
+            gravityHandler.isAffectedByGravity = true;   
             basicMovement.Move(_currentMovementXInput);
             
             if (_jumpAfterDash)
             {
-                basicMovement.Jump();
+                basicJump.Jump();
                 _jumpAfterDash = false;
             }
         }

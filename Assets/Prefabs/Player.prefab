@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 6251642010812228277}
   - component: {fileID: 3749072304539165989}
   - component: {fileID: 6315777213375629659}
+  - component: {fileID: 6500479679679143233}
+  - component: {fileID: 7714314366856948732}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -366,6 +368,8 @@ MonoBehaviour:
   dashSpeed: 5
   dashDuration: 0.2
   dashCooldown: 0.5
+  flipper: {fileID: 5739726705709461561}
+  wallChecker: {fileID: 0}
 --- !u!114 &3386898761760983958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,13 +383,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpHeight: 20
-  groundChecker: {fileID: 3750066606655957371}
   wallChecker: {fileID: 1812159323369293338}
-  ceilingChecker: {fileID: 6454002104662202483}
-  gravity: 5
   flipper: {fileID: 5739726705709461561}
-  dash: {fileID: 6510533271030685582}
 --- !u!114 &4203358332605474249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,8 +398,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationHandler: {fileID: 3749072304539165989}
-  playerMovement: {fileID: 3386898761760983958}
+  basicMovement: {fileID: 0}
   attackHandler: {fileID: 4357701142141395963}
+  dash: {fileID: 6510533271030685582}
+  basicJump: {fileID: 6500479679679143233}
+  gravityHandler: {fileID: 7714314366856948732}
 --- !u!114 &4357701142141395963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +471,38 @@ MonoBehaviour:
   knockBackSpeed: 55
   knockBackDuration: 50
   stunDurationAfterKnockBack: 50
+--- !u!114 &6500479679679143233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053705560472392945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43da30e8839ff3842b19290de4867b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundChecker: {fileID: 3750066606655957371}
+  gravityHandler: {fileID: 7714314366856948732}
+  jumpHeight: 20
+--- !u!114 &7714314366856948732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053705560472392945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b730b230da99d124fbace3ebdf1112c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityStrength: 5
+  ceilingChecker: {fileID: 6454002104662202483}
+  groundChecker: {fileID: 3750066606655957371}
+  verticalMovement: 0
+  isAffectedByGravity: 1
 --- !u!1 &3855803523410479266
 GameObject:
   m_ObjectHideFlags: 0
