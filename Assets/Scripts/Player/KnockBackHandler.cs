@@ -11,12 +11,19 @@ namespace Player
         [SerializeField] private float knockBackDuration;
         [SerializeField] private float stunDurationAfterKnockBack; 
 
-        private readonly Dictionary<Health, Coroutine> _activeKnockBacks = new ();
+        private readonly Dictionary<Health, Coroutine> _activeKnockBacks = new Dictionary<Health, Coroutine>();
 
         public void KnockBack(Health targetHealth)
         {
-            var knockBackCoroutine = StartCoroutine(KnockBackCoroutine(targetHealth));
-            _activeKnockBacks[targetHealth] = knockBackCoroutine;
+            //Check if the target already is being knockedBack
+            if (_activeKnockBacks.TryGetValue(targetHealth, out Coroutine existingCoroutine))
+            {
+                StopCoroutine(existingCoroutine);  
+            }
+
+            Coroutine newKnockBackCoroutine = StartCoroutine(KnockBackCoroutine(targetHealth));
+            _activeKnockBacks[targetHealth] = newKnockBackCoroutine;
+
             targetHealth.OnDeath += () =>
             {
                 if (_activeKnockBacks.TryGetValue(targetHealth, out var coroutine))
@@ -54,8 +61,6 @@ namespace Player
                 timer += Time.deltaTime;
                 yield return null;
             }
-
-            targetRigidBody.velocity = Vector2.zero;
 
             yield return new WaitForSeconds(ApplyResistance(stunDurationAfterKnockBack, targetHealth.stunResistence));
 

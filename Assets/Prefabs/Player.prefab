@@ -468,9 +468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c4d230fe9aa9144aeebea2d7fe1ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBackSpeed: 55
-  knockBackDuration: 50
-  stunDurationAfterKnockBack: 50
+  knockBackSpeed: 5
+  knockBackDuration: 0.5
+  stunDurationAfterKnockBack: 0.5
 --- !u!114 &6500479679679143233
 MonoBehaviour:
   m_ObjectHideFlags: 0
