@@ -17,7 +17,7 @@ namespace Shared.Collision
             _parentRenderer = parentTransform.GetComponent<Renderer>();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             var collider = collisionChecker.GetCollider();
             isTouchingWall = collider != null;
@@ -29,7 +29,7 @@ namespace Shared.Collision
             
                 var colliderEdgePositionX = flipper.facingRight ? collider.bounds.min.x : collider.bounds.max.x;
                 var parentPositionX = colliderEdgePositionX + (flipper.facingRight ? -1 : 1) * _parentRenderer.bounds.size.x / 2; // Set player positionX to collider edge +/- half player width since position is in the middle of the player
-                parentTransform.position = new Vector3(parentPositionX, position.y, position.z); 
+                parentTransform.position = new Vector2(parentPositionX, position.y); 
             }
         }
     }

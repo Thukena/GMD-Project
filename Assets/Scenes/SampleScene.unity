@@ -1262,6 +1262,10 @@ PrefabInstance:
       propertyPath: wallChecker
       value: 
       objectReference: {fileID: 124729293}
+    - target: {fileID: 7714314366856948732, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: gravityStrength
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

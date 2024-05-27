@@ -8,6 +8,7 @@ namespace Shared.Collision
         public bool isGrounded;
         [SerializeField] private Transform parentTransform;
         [SerializeField] private CollisionChecker collisionChecker;
+        [SerializeField] private GravityHandler gravityHandler;
         private Renderer _parentRenderer;
 
         // Start is called before the first frame update
@@ -16,16 +17,16 @@ namespace Shared.Collision
             _parentRenderer = parentTransform.GetComponent<Renderer>();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             var collider = collisionChecker.GetCollider();
-        
-            if (collider != null)
+
+            if (collider != null && gravityHandler.verticalMovement <= 0)
             {
                 isGrounded = true;
 
                 var position = parentTransform.position;
-                parentTransform.position = new Vector3(position.x, collider.bounds.max.y + _parentRenderer.bounds.size.y / 2, position.z);; // Set player position to collider top + half player height since position is in the middle of the player
+                parentTransform.position = new Vector2(position.x, collider.bounds.max.y + _parentRenderer.bounds.size.y / 2); // Set player position to collider top + half player height since position is in the middle of the player
                 Physics2D.SyncTransforms(); // update the position of the player immediately to move WallChecker colliderChecker
             }
             else
@@ -33,6 +34,5 @@ namespace Shared.Collision
                 isGrounded = false;
             }
         }
-
     }
 }

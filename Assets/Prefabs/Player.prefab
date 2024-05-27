@@ -308,6 +308,7 @@ MonoBehaviour:
   isGrounded: 0
   parentTransform: {fileID: 1556622398067608217}
   collisionChecker: {fileID: 2432225764448399548}
+  gravityHandler: {fileID: 7714314366856948732}
 --- !u!114 &6454002104662202483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +324,7 @@ MonoBehaviour:
   isTouchingCeiling: 0
   parentTransform: {fileID: 1556622398067608217}
   collisionChecker: {fileID: 142460385660096049}
+  gravityHandler: {fileID: 7714314366856948732}
 --- !u!114 &5739726705709461561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +371,7 @@ MonoBehaviour:
   dashDuration: 0.2
   dashCooldown: 0.5
   flipper: {fileID: 5739726705709461561}
-  wallChecker: {fileID: 0}
+  wallChecker: {fileID: 1812159323369293338}
 --- !u!114 &3386898761760983958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationHandler: {fileID: 3749072304539165989}
-  basicMovement: {fileID: 0}
+  basicMovement: {fileID: 3386898761760983958}
   attackHandler: {fileID: 4357701142141395963}
   dash: {fileID: 6510533271030685582}
   basicJump: {fileID: 6500479679679143233}
