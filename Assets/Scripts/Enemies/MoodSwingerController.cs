@@ -1,4 +1,3 @@
-using Shared;
 using UnityEngine;
 
 namespace Enemies
@@ -7,27 +6,36 @@ namespace Enemies
     public class MoodSwingerController : MonoBehaviour
     {
         [SerializeField] private MoodSwingerAIStateHandler aiStateHandler;
-        [SerializeField] private DirectFollow directFollow;
-        [SerializeField] private Transform playerTransform; //Should be in directFollow instead?
+        [SerializeField] private Transform playerTransform;
+        private IFollow _follow;
+        private IAttack _attack;
 
-        
         private void Start()
         {
+            _follow = GetComponent<IFollow>();
+            _attack = GetComponent<IAttack>();
         }
-        
+
         private void Update()
         {
+            if (_attack.IsAttacking)
+            {
+                return;
+            }
+            
             switch (aiStateHandler.currentState)
             {
                 case MoodSwingerState.Following:
-                    directFollow.FollowTarget(playerTransform);
+                    _follow.FollowTarget(playerTransform);
                     break;
                 case MoodSwingerState.Attacking:
+                    _attack.Attack();
+                    _follow.StopFollowTarget();
                     break;
                 case MoodSwingerState.Fleeing:
                     break;
                 case MoodSwingerState.Stunned:
-                    directFollow.StopFollowTarget();
+                    _follow.StopFollowTarget();
                     break;
             }
         }

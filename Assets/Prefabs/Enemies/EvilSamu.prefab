@@ -13,6 +13,10 @@ PrefabInstance:
       value: EvilSamu
       objectReference: {fileID: 0}
     - target: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}

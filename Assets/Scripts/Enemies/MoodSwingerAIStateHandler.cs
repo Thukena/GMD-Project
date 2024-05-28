@@ -9,7 +9,17 @@ namespace Enemies
         
         [SerializeField] private Health health;
         [SerializeField] private Transform playerTransform;
-        
+        [SerializeField] private float attackCooldown; 
+        [SerializeField] private float attackRangeX;    
+        [SerializeField] private float attackRangeY;
+        [SerializeField] private GravityHandler gravityHandler;
+        private float lastAttackTime;
+
+        private void Start()
+        {
+            lastAttackTime = -attackCooldown;
+        }
+
         void Update()
         {
             if (health.isStunned)
@@ -19,6 +29,7 @@ namespace Enemies
             else if (ShouldAttack())
             {
                 currentState = MoodSwingerState.Attacking;
+                lastAttackTime = Time.time; 
             }
             else if (ShouldFlee())
             {
@@ -29,9 +40,18 @@ namespace Enemies
                 currentState = MoodSwingerState.Following;
             }
         }
-        
+
         private bool ShouldAttack()
         {
+            float timeSinceLastAttack = Time.time - lastAttackTime;
+            if (timeSinceLastAttack >= attackCooldown && gravityHandler.verticalMovement.Equals(0f))
+            {
+                float distanceToPlayerX = Mathf.Abs(transform.position.x - playerTransform.position.x);
+                float distanceToPlayerY = Mathf.Abs(transform.position.y - playerTransform.position.y);
+
+                return distanceToPlayerX <= attackRangeX && distanceToPlayerY <= attackRangeY;
+            }
+            
             return false;
         }
         
