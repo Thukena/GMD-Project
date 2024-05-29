@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3750066606655957371, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 9022428039609130328}
     - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: damage
       value: 15
@@ -231,6 +235,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58020cd8cdbe0f4896ec871b5b0acdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &9022428039609130328 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3192323960834627806, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+  m_PrefabInstance: {fileID: 5871413830326224262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9114122087434309136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3386898761760983958, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}

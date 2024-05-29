@@ -309,6 +309,7 @@ MonoBehaviour:
   parentTransform: {fileID: 1556622398067608217}
   collisionChecker: {fileID: 2432225764448399548}
   gravityHandler: {fileID: 7714314366856948732}
+  spriteRenderer: {fileID: 3192323960834627806}
 --- !u!114 &6454002104662202483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +729,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  spriteTransform: {fileID: 1556622398067608217}
 --- !u!1 &6045678713821033160
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +823,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  spriteTransform: {fileID: 0}
 --- !u!1 &7393883382899344541
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +917,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  spriteTransform: {fileID: 0}
 --- !u!1001 &1018098691950277891
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,12 +9,12 @@ namespace Shared.Collision
         [SerializeField] private Transform parentTransform;
         [SerializeField] private CollisionChecker collisionChecker;
         [SerializeField] private GravityHandler gravityHandler;
-        private Renderer _parentRenderer;
+        [SerializeField] private Renderer spriteRenderer;
 
-        // Start is called before the first frame update
+        private float _spriteSizeY;
         private void Start()
         {
-            _parentRenderer = parentTransform.GetComponent<Renderer>();
+            _spriteSizeY = spriteRenderer.bounds.size.y;
         }
 
         private void Update()
@@ -26,7 +26,7 @@ namespace Shared.Collision
                 isGrounded = true;
 
                 var position = parentTransform.position;
-                parentTransform.position = new Vector2(position.x, collider.bounds.max.y + _parentRenderer.bounds.size.y / 2); // Set player position to collider top + half player height since position is in the middle of the player
+                parentTransform.position = new Vector2(position.x, collider.bounds.max.y + _spriteSizeY / 2); // Set player position to collider top + half player height since position is in the middle of the player
                 Physics2D.SyncTransforms(); // update the position of the player immediately to move WallChecker colliderChecker
             }
             else
