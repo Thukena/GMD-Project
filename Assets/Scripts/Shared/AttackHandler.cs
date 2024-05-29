@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Player;
 using UnityEngine;
 
 namespace Shared
@@ -13,15 +12,11 @@ namespace Shared
         [SerializeField] private float attackCooldown;
         [SerializeField] private string targetTag;
         [SerializeField] BoxCollider2D boxCollider;
-        [SerializeField] private KnockBackHandler knockBackHandler;
+        [SerializeField] private float knockBackSpeed;
+        [SerializeField] private float knockBackDuration;
+        [SerializeField] private float stunDurationAfterKnockBack;
 
-        private bool _canKnockBack;
         private readonly HashSet<Collider2D> _hitTargets = new();
-
-        private void Start()
-        {
-            _canKnockBack = knockBackHandler != null;
-        }
 
         public void Attack()
         {
@@ -43,11 +38,11 @@ namespace Shared
                     if (hit.CompareTag(targetTag) && !_hitTargets.Contains(hit))
                     {
                         _hitTargets.Add(hit);
-                        Health healthComponent = hit.GetComponent<Health>();
+                        var healthComponent = hit.GetComponent<Health>();
                         healthComponent.TakeDamage(damage);
-                        if (_canKnockBack && healthComponent.isDead == false)
+                        if (healthComponent.isDead == false)
                         {
-                            knockBackHandler.KnockBack(healthComponent);
+                            healthComponent.GetKnockedBack(knockBackSpeed, knockBackDuration, stunDurationAfterKnockBack, transform.position.x);
                         }
                     }
                 }

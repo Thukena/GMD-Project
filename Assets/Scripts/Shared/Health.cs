@@ -16,6 +16,8 @@ namespace Shared
         [SerializeField] private float healthRegenRate;
         [SerializeField] private int healthRegenAmount;
         [SerializeField] private Image greenHealthBar;
+        [SerializeField] private KnockBackHandler knockBackHandler;
+        
         private int _currentHealth;
         private bool IsFullHealth => _currentHealth == maxHealth;
 
@@ -40,6 +42,11 @@ namespace Shared
                 print("DEAD");
                 Destroy(gameObject);
             }
+        }
+        
+        public void GetKnockedBack(float knockBackSpeed, float knockBackDuration, float stunDuration, float attackerPosition)
+        {
+            knockBackHandler.KnockBack(knockBackSpeed, knockBackDuration, stunDuration, attackerPosition);
         }
 
         private IEnumerator RegenHealth()

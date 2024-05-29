@@ -7,16 +7,9 @@ namespace Shared.Collision
         [SerializeField] private Transform parentTransform;
         [SerializeField] private CollisionChecker collisionChecker;
         [SerializeField] private Flipper flipper;
+        [SerializeField] private SpriteRenderer sprite;
         public bool isTouchingWall;
     
-        private Renderer _parentRenderer;
-    
-        // Start is called before the first frame update
-        private void Start()
-        {
-            _parentRenderer = parentTransform.GetComponent<Renderer>();
-        }
-
         private void Update()
         {
             var collider = collisionChecker.GetCollider();
@@ -28,7 +21,7 @@ namespace Shared.Collision
                 var position = parentTransform.position;
             
                 var colliderEdgePositionX = flipper.facingRight ? collider.bounds.min.x : collider.bounds.max.x;
-                var parentPositionX = colliderEdgePositionX + (flipper.facingRight ? -1 : 1) * _parentRenderer.bounds.size.x / 2; // Set player positionX to collider edge +/- half player width since position is in the middle of the player
+                var parentPositionX = colliderEdgePositionX + (flipper.facingRight ? -1 : 1) * sprite.bounds.size.x / 2; // Set player positionX to collider edge +/- half player width since position is in the middle of the player
                 parentTransform.position = new Vector2(parentPositionX, position.y); 
             }
         }

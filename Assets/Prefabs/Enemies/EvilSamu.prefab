@@ -117,6 +117,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: knockBackHandler
+      value: 
+      objectReference: {fileID: 572525295451200259}
+    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: healthRegenAmount
       value: 0
       objectReference: {fileID: 0}
@@ -142,6 +146,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1237449328953646668}
+    - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 572525295451200259}
   m_SourcePrefab: {fileID: 100100000, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
 --- !u!114 &556538202915481395 stripped
 MonoBehaviour:
@@ -165,6 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43da30e8839ff3842b19290de4867b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1801323108204793978 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5297612052244125180, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+  m_PrefabInstance: {fileID: 5871413830326224262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5214436681830089628 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1812159323369293338, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
@@ -213,6 +225,21 @@ MonoBehaviour:
   basicMovement: {fileID: 9114122087434309136}
   wallChecker: {fileID: 5214436681830089628}
   basicJump: {fileID: 814346787300219079}
+--- !u!114 &572525295451200259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909912000183570807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c4d230fe9aa9144aeebea2d7fe1ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 556538202915481395}
+  sprite: {fileID: 9022428039609130328}
+  rigidBody: {fileID: 1801323108204793978}
 --- !u!114 &7312740375505330339 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3749072304539165989, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}

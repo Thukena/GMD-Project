@@ -8,13 +8,7 @@ namespace Shared.Collision
         [SerializeField] private Transform parentTransform;
         [SerializeField] private CollisionChecker collisionChecker;
         [SerializeField] private GravityHandler gravityHandler;
-    
-        private Renderer _parentRenderer;
-
-        private void Start()
-        {
-            _parentRenderer = parentTransform.GetComponent<Renderer>();
-        }
+        [SerializeField] private SpriteRenderer sprite;
 
         private void Update()
         {
@@ -24,7 +18,7 @@ namespace Shared.Collision
             {
                 isTouchingCeiling = true;
                 var position = parentTransform.position;
-                parentTransform.position = new Vector3(position.x, collider.bounds.min.y - _parentRenderer.bounds.size.y / 2, position.z); // Set player position to collider bottom - half player height since position is in the middle of the player
+                parentTransform.position = new Vector3(position.x, collider.bounds.min.y - sprite.bounds.size.y / 2, position.z); // Set player position to collider bottom - half player height since position is in the middle of the player
                 Physics2D.SyncTransforms(); // update the position of the player immediately to move WallChecker colliderChecker
             }
             else

@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 8762218587733160843}
   - component: {fileID: 3721655484906131524}
   - component: {fileID: 5288133401045323568}
+  - component: {fileID: 6718895381931231898}
   m_Layer: 0
   m_Name: Moodswinger
   m_TagString: Enemy
@@ -225,7 +226,6 @@ MonoBehaviour:
   collisionChecker: {fileID: 7460603526767133994}
   gravityHandler: {fileID: 6734793301747320578}
   spriteRenderer: {fileID: 2459311994270680291}
-  parentRigidbody: {fileID: 5328680350050310342}
 --- !u!114 &3563679072876383000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   parentTransform: {fileID: 8070066380956216750}
   collisionChecker: {fileID: 7467879302427647473}
   flipper: {fileID: 4939605189315517186}
+  sprite: {fileID: 2459311994270680291}
   isTouchingWall: 0
 --- !u!114 &4939605189315517186
 MonoBehaviour:
@@ -275,6 +276,7 @@ MonoBehaviour:
   healthRegenRate: 0
   healthRegenAmount: 0
   greenHealthBar: {fileID: 5097853376765655709}
+  knockBackHandler: {fileID: 6718895381931231898}
 --- !u!114 &2728854860653134715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +337,7 @@ MonoBehaviour:
   parentTransform: {fileID: 8070066380956216750}
   collisionChecker: {fileID: 6050305655064440309}
   gravityHandler: {fileID: 6734793301747320578}
+  sprite: {fileID: 2459311994270680291}
 --- !u!114 &8488488705145348388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,6 +483,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6718895381931231898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253732417335450912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c4d230fe9aa9144aeebea2d7fe1ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 822538736875779681}
+  sprite: {fileID: 2459311994270680291}
+  rigidBody: {fileID: 5328680350050310342}
 --- !u!1 &1838390183056815964
 GameObject:
   m_ObjectHideFlags: 0
