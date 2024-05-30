@@ -7,6 +7,7 @@ namespace Enemies
     {
         [SerializeField] private MoodSwingerAIStateHandler aiStateHandler;
         [SerializeField] private Transform playerTransform;
+        [SerializeField] private MoodSwingerAnimationHandler moodSwingerAnimationHandler;
         private IFollow _follow;
         private IAttack _attack;
 
@@ -27,9 +28,11 @@ namespace Enemies
             {
                 case MoodSwingerState.Following:
                     _follow.FollowTarget(playerTransform);
+                    moodSwingerAnimationHandler.StartFollowAnimation();
                     break;
                 case MoodSwingerState.Attacking:
                     _attack.Attack();
+                    moodSwingerAnimationHandler.StartAttackAnimation();
                     _follow.StopFollowTarget();
                     break;
                 case MoodSwingerState.Fleeing:
