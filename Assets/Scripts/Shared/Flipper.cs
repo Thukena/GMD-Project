@@ -16,6 +16,7 @@ namespace Shared
             Vector3 localScale = transform.localScale;
             localScale.x *= -1; 
             transform.localScale = localScale;
+            Physics2D.SyncTransforms(); // update the position of the player immediately to move WallChecker colliderChecker
         }
     }
 }
