@@ -21,6 +21,13 @@ namespace Enemies
 
         private void Update()
         {
+            if (aiStateHandler.currentState == MoodSwingerState.Stunned)
+            {
+                _movementAI.StopMovement();
+                _attack.StopAttack();
+                ChangeAnimationState("Stunned");
+            }
+            
             if (_attack.IsAttacking)
             {
                 return;
@@ -41,9 +48,6 @@ namespace Enemies
                 case MoodSwingerState.Fleeing:
                     _movementAI.FleeTarget(playerTransform);
                     ChangeAnimationState("Flee");
-                    break;
-                case MoodSwingerState.Stunned:
-                    _movementAI.StopMovement();
                     break;
             }
         }

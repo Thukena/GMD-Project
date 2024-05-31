@@ -25,6 +25,8 @@ namespace Enemies
         private Vector3 _originalScale;
         private Vector3 _originalPosition;
         private Vector3 _originalBoxColliderSize;
+        private Coroutine _currentAttack;
+        
         private void Start()
         {
             _laserTransform = laser.transform;
@@ -37,7 +39,13 @@ namespace Enemies
         {
             IsAttacking = true;
             laser.SetActive(true);
-            StartCoroutine(FireLaser());
+            _currentAttack = StartCoroutine(FireLaser());
+        }
+
+        public void StopAttack()
+        {
+            StopCoroutine(_currentAttack);
+            StopLaser();
         }
 
         private IEnumerator FireLaser()
@@ -68,7 +76,11 @@ namespace Enemies
                 time += Time.deltaTime;
                 yield return null;
             }
-            
+            StopLaser();
+        }
+
+        private void StopLaser()
+        {
             _laserTransform.localScale = _originalScale;
             _laserTransform.localPosition = _originalPosition; 
 
