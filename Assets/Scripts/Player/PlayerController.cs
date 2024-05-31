@@ -54,7 +54,7 @@ namespace Player
         {
             if (context.performed && attackHandler.canAttack)
             {
-                animationHandler.StartAttackAnimation(attackHandler.attackDuration);
+                animationHandler.StartTriggerAnimation("Attack", attackHandler.attackDuration);
                 attackHandler.Attack();
             }
         }

@@ -35,7 +35,7 @@ namespace Enemies
                 
                 if (canAttack)
                 {
-                    animationHandler.StartAttackAnimation(attackHandler.attackDuration);
+                    animationHandler.StartTriggerAnimation("Attack", attackHandler.attackDuration);
                     attackHandler.Attack();
                 }
             }

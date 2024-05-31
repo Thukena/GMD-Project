@@ -1,3 +1,4 @@
+using Shared;
 using UnityEngine;
 
 namespace Enemies
@@ -7,7 +8,7 @@ namespace Enemies
     {
         [SerializeField] private MoodSwingerAIStateHandler aiStateHandler;
         [SerializeField] private Transform playerTransform;
-        [SerializeField] private MoodSwingerAnimationHandler moodSwingerAnimationHandler;
+        [SerializeField] private AnimationHandler animationHandler;
         private IFollow _follow;
         private IAttack _attack;
 
@@ -28,11 +29,11 @@ namespace Enemies
             {
                 case MoodSwingerState.Following:
                     _follow.FollowTarget(playerTransform);
-                    moodSwingerAnimationHandler.StartFollowAnimation();
+                    ChangeAnimationState("Follow");
                     break;
                 case MoodSwingerState.Attacking:
                     _attack.Attack();
-                    moodSwingerAnimationHandler.StartAttackAnimation();
+                    ChangeAnimationState("Attack");
                     _follow.StopFollowTarget();
                     break;
                 case MoodSwingerState.Fleeing:
@@ -40,6 +41,14 @@ namespace Enemies
                 case MoodSwingerState.Stunned:
                     _follow.StopFollowTarget();
                     break;
+            }
+        }
+        
+        private void ChangeAnimationState(string animationName)
+        {
+            if (!animationHandler.currentAnimationState.Equals(animationName))
+            {
+                animationHandler.ChangeAnimationState(animationName);
             }
         }
     }

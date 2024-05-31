@@ -464,6 +464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8585029978559116650}
   attackAnimationDuration: 0.5
+  animationStates:
+  - Attack
 --- !u!114 &6500479679679143233
 MonoBehaviour:
   m_ObjectHideFlags: 0
