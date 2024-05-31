@@ -1,21 +1,22 @@
 using System;
+using Enemies.Interfaces;
 using Shared;
 using Shared.Collision;
 using UnityEngine;
 
 namespace Enemies
 {
-    public class DirectFollow : MonoBehaviour, IFollow
+    public class DirectMovementAI : MonoBehaviour, MovementAI
     {
         [SerializeField] private BasicMovement basicMovement;
         [SerializeField] private WallChecker wallChecker;
         [SerializeField] private BasicJump basicJump;
 
-        private bool _isFollowing;
+        private bool _isMoving;
 
         public void FollowTarget(Transform target)
         {
-            _isFollowing = true;
+            _isMoving = true;
             
             if (wallChecker.isTouchingWall)
             {
@@ -29,18 +30,30 @@ namespace Enemies
             {
                 basicMovement.Move(transformPositionX > transform.position.x ? 1 : -1);
             }
-            else if (_isFollowing)
+            else if (_isMoving)
             {
-               StopFollowTarget();
+               StopMovement();
             }
         }
 
-        public void StopFollowTarget()
+        public void FleeTarget(Transform target)
         {
-            if (_isFollowing)
+            _isMoving = true;
+            
+            if (wallChecker.isTouchingWall)
+            {
+                basicJump.Jump();
+            }
+            
+            basicMovement.Move(target.position.x > transform.position.x ? -1 : 1);
+        }
+
+        public void StopMovement()
+        {
+            if (_isMoving)
             {
                 basicMovement.Move(0);
-                _isFollowing = false;
+                _isMoving = false;
             }
         }
     }

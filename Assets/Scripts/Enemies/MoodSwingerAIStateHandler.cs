@@ -43,8 +43,7 @@ namespace Enemies
 
         private bool ShouldAttack()
         {
-            float timeSinceLastAttack = Time.time - lastAttackTime;
-            if (timeSinceLastAttack >= attackCooldown && gravityHandler.verticalMovement.Equals(0f))
+            if (CanAttack() && gravityHandler.verticalMovement.Equals(0f))
             {
                 float distanceToPlayerX = Mathf.Abs(transform.position.x - playerTransform.position.x);
                 float distanceToPlayerY = Mathf.Abs(transform.position.y - playerTransform.position.y);
@@ -54,10 +53,16 @@ namespace Enemies
             
             return false;
         }
+
+        private bool CanAttack()
+        {
+            float timeSinceLastAttack = Time.time - lastAttackTime;
+            return timeSinceLastAttack >= attackCooldown;
+        }
         
         private bool ShouldFlee()
         {
-            return false;
+            return !CanAttack();
         }
         
     }

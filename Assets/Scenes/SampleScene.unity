@@ -990,6 +990,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8161784694409201334, guid: 319b694a91d70db4d9b7e179a038702a, type: 3}
+      propertyPath: animationStates.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161784694409201334, guid: 319b694a91d70db4d9b7e179a038702a, type: 3}
+      propertyPath: animationStates.Array.data[2]
+      value: Flee
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161784694409201334, guid: 319b694a91d70db4d9b7e179a038702a, type: 3}
+      propertyPath: animationStates.Array.data[3]
+      value: Stunned
+      objectReference: {fileID: 0}
+    - target: {fileID: 8488488705145348388, guid: 319b694a91d70db4d9b7e179a038702a, type: 3}
+      propertyPath: attackCooldown
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8488488705145348388, guid: 319b694a91d70db4d9b7e179a038702a, type: 3}
       propertyPath: playerTransform
       value: 

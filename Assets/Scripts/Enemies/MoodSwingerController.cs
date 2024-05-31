@@ -1,3 +1,4 @@
+using Enemies.Interfaces;
 using Shared;
 using UnityEngine;
 
@@ -9,12 +10,12 @@ namespace Enemies
         [SerializeField] private MoodSwingerAIStateHandler aiStateHandler;
         [SerializeField] private Transform playerTransform;
         [SerializeField] private AnimationHandler animationHandler;
-        private IFollow _follow;
+        private MovementAI _movementAI;
         private IAttack _attack;
 
         private void Start()
         {
-            _follow = GetComponent<IFollow>();
+            _movementAI = GetComponent<MovementAI>();
             _attack = GetComponent<IAttack>();
         }
 
@@ -28,18 +29,21 @@ namespace Enemies
             switch (aiStateHandler.currentState)
             {
                 case MoodSwingerState.Following:
-                    _follow.FollowTarget(playerTransform);
+                    _movementAI.FollowTarget(playerTransform);
                     ChangeAnimationState("Follow");
                     break;
                 case MoodSwingerState.Attacking:
                     _attack.Attack();
                     ChangeAnimationState("Attack");
-                    _follow.StopFollowTarget();
+                    _movementAI.FollowTarget(playerTransform); //Make sure the enemy is facing the player
+                    _movementAI.StopMovement();
                     break;
                 case MoodSwingerState.Fleeing:
+                    _movementAI.FleeTarget(playerTransform);
+                    ChangeAnimationState("Flee");
                     break;
                 case MoodSwingerState.Stunned:
-                    _follow.StopFollowTarget();
+                    _movementAI.StopMovement();
                     break;
             }
         }

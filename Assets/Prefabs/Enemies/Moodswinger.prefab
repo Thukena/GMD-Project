@@ -354,7 +354,7 @@ MonoBehaviour:
   currentState: 0
   health: {fileID: 822538736875779681}
   playerTransform: {fileID: 0}
-  attackCooldown: 2
+  attackCooldown: 13
   attackRangeX: 10
   attackRangeY: 1
   gravityHandler: {fileID: 6734793301747320578}

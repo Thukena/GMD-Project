@@ -1,3 +1,4 @@
+using Enemies.Interfaces;
 using Shared;
 using UnityEngine;
 
@@ -12,18 +13,18 @@ namespace Enemies
         [SerializeField] private AttackHandler attackHandler;
         [SerializeField] private Health health;
 
-        private IFollow _follow;
+        private MovementAI _movementAI;
 
         private void Start()
         {
-            _follow = GetComponent<IFollow>();
+            _movementAI = GetComponent<MovementAI>();
         }
 
         private void Update()
         {
             if (health.isStunned)
             {
-                _follow.StopFollowTarget();
+                _movementAI.StopMovement();
                 return;
             }
             
@@ -31,7 +32,7 @@ namespace Enemies
             
             if (Vector2.Distance(transform.position, playerTransform.position) <= attackDistance)
             {
-                _follow.StopFollowTarget();
+                _movementAI.StopMovement();
                 
                 if (canAttack)
                 {
@@ -41,7 +42,7 @@ namespace Enemies
             }
             else
             {
-                _follow.FollowTarget(playerTransform);
+                _movementAI.FollowTarget(playerTransform);
             }
         }
     }
