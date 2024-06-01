@@ -16,7 +16,7 @@ but determining whether the ball should be able to jump turned out to be challen
 I first tried checking the object’s velocity, so it was only allowed to jump when not falling or ascending,
 but then I discovered that it would not be able to move downwards or upwards slopes. So, I decided not to go with this solution.
 
-![OnJump method](./Images/OnJump.png)
+![OnJump method](./Images/Blogpost1/OnJump.png)
 
 ### Jump mechanic: Collision Detection
 
@@ -25,7 +25,7 @@ I was not sure how to make the collision only trigger at the bottom of the ball.
 I then found a solution to create an empty child object positioned at the ball’s bottom and using the child to check for ground collision.
 This required filtering out the ball to avoid always being allowed to jump.
 
-![isGrounded](./Images/isGrounded.png)
+![isGrounded](./Images/Blogpost1/isGrounded.png)
 
 There was a problem though.
 Because of how child objects work in Unity I did not notice that the child was not only moving with the parent, but also rotating.
@@ -44,5 +44,5 @@ The poles were created as prefabs containing a cylinder and plane object, to eas
 But I forgot that changing the prefab scale would also change the plane object’s height making it very thick,
 so I had to manually choose the cylinder scale and reposition the platform accordingly, instead of just scaling the prefab sadly.
 
-![Roll-a-ball game](./Images/Roll-a-ball.png)
+![Roll-a-ball game](./Images/Blogpost1/Roll-a-ball.png)
 
