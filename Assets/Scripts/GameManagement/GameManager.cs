@@ -1,6 +1,5 @@
 using Shared;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GameManagement
 {
@@ -29,18 +28,5 @@ namespace GameManagement
             playerInput.EnableUIControls();
             gameOverPanel.SetActive(true);
         }
-        
-        public void RetryGame()
-        {
-            SceneManager.LoadScene(0); //Restart game
-            playerInput.EnableUIControls();
-            Time.timeScale = 1; //Resume game
-        }
-
-        public void QuitGame()
-        {
-            print("QUIT GAME!");
-        }
-        
     }
 }
