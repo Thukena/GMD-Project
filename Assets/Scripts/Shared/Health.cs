@@ -39,8 +39,6 @@ namespace Shared
             {
                 isDead = true;
                 OnDeath?.Invoke();
-                print("DEAD");
-                Destroy(gameObject);
             }
         }
         

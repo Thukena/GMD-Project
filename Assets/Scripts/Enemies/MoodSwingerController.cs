@@ -1,4 +1,5 @@
 using Enemies.Interfaces;
+using GameManagement;
 using Player;
 using Shared;
 using UnityEngine;
@@ -18,11 +19,16 @@ namespace Enemies
         {
             _movementAI = GetComponent<IMovementAI>();
             _attack = GetComponent<IAttack>();
-            playerTransform = PlayerManager.Instance.Player.transform;
+            playerTransform = GameManager.Instance.Player.transform;
         }
 
         private void Update()
         {
+            if (aiStateHandler.currentState == MoodSwingerState.Dead)
+            { 
+                Destroy(gameObject);
+            }
+            
             if (aiStateHandler.currentState == MoodSwingerState.Stunned)
             {
                 _movementAI.StopMovement();

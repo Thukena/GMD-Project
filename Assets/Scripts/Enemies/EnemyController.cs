@@ -1,5 +1,5 @@
 using Enemies.Interfaces;
-using Player;
+using GameManagement;
 using Shared;
 using UnityEngine;
 
@@ -19,7 +19,8 @@ namespace Enemies
         private void Start()
         {
             _movementAI = GetComponent<IMovementAI>();
-            playerTransform = PlayerManager.Instance.Player.transform;
+            playerTransform = GameManager.Instance.Player.transform;
+            health.OnDeath += () => Destroy(gameObject);
         }
 
         private void Update()

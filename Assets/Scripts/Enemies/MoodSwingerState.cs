@@ -5,6 +5,7 @@ namespace Enemies
         Following, 
         Attacking, 
         Fleeing, 
-        Stunned
+        Stunned,
+        Dead
     }
 }

@@ -1,3 +1,4 @@
+using GameManagement;
 using Player;
 using Shared;
 using UnityEngine;
@@ -19,12 +20,17 @@ namespace Enemies
         private void Start()
         {
             lastAttackTime = -attackCooldown;
-            playerTransform = PlayerManager.Instance.Player.transform;
+            playerTransform = GameManager.Instance.Player.transform;
         }
 
         void Update()
         {
-            if (health.isStunned)
+
+            if (health.isDead)
+            {
+                currentState = MoodSwingerState.Dead;   
+            }
+            else if (health.isStunned)
             {
                 currentState = MoodSwingerState.Stunned;
             }

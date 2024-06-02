@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameManager
+namespace GameManagement
 {
     public class EnemySpawner : MonoBehaviour
     {
