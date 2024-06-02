@@ -9,7 +9,7 @@ namespace Shared.Collision
         private BoxCollider2D _boxCollider;
 
         // Start is called before the first frame update
-        private void Start()
+        private void Awake()
         {
             _boxCollider = GetComponent<BoxCollider2D>();
         }

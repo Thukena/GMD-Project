@@ -1,4 +1,5 @@
 using Enemies.Interfaces;
+using Player;
 using Shared;
 using UnityEngine;
 
@@ -7,17 +8,18 @@ namespace Enemies
     public class EnemyController : MonoBehaviour
     {
     
-        [SerializeField] private Transform playerTransform;
         [SerializeField] private float attackDistance;
         [SerializeField] private AnimationHandler animationHandler;
         [SerializeField] private AttackHandler attackHandler;
         [SerializeField] private Health health;
 
-        private MovementAI _movementAI;
+        private IMovementAI _movementAI;
+        private Transform playerTransform;
 
         private void Start()
         {
-            _movementAI = GetComponent<MovementAI>();
+            _movementAI = GetComponent<IMovementAI>();
+            playerTransform = PlayerManager.Instance.Player.transform;
         }
 
         private void Update()

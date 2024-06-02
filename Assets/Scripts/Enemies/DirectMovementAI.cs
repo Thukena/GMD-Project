@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class DirectMovementAI : MonoBehaviour, MovementAI
+    public class DirectMovementAI : MonoBehaviour, IMovementAI
     {
         [SerializeField] private BasicMovement basicMovement;
         [SerializeField] private WallChecker wallChecker;

@@ -1,3 +1,4 @@
+using Player;
 using Shared;
 using UnityEngine;
 
@@ -8,16 +9,17 @@ namespace Enemies
         public MoodSwingerState currentState;
         
         [SerializeField] private Health health;
-        [SerializeField] private Transform playerTransform;
         [SerializeField] private float attackCooldown; 
         [SerializeField] private float attackRangeX;    
         [SerializeField] private float attackRangeY;
         [SerializeField] private GravityHandler gravityHandler;
+        private Transform playerTransform;
         private float lastAttackTime;
 
         private void Start()
         {
             lastAttackTime = -attackCooldown;
+            playerTransform = PlayerManager.Instance.Player.transform;
         }
 
         void Update()

@@ -464,6 +464,8 @@ MonoBehaviour:
   animationStates:
   - Follow
   - Attack
+  - Stunned
+  - Flee
 --- !u!1 &1838390183056815964
 GameObject:
   m_ObjectHideFlags: 0

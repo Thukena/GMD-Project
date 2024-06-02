@@ -7,19 +7,24 @@ namespace Shared
 {
     public class AnimationHandler : MonoBehaviour
     {
-        public string currentAnimationState;
         [SerializeField] private Animator animator;
         [SerializeField] private List<string> animationStates;
+        private string _currentAnimationState;
 
         public void ChangeAnimationState(string animationName, float? animationDuration = null)
         {
+            if (animationName.Equals(_currentAnimationState))
+            {
+                return;
+            }
+            
             if (animationDuration != null)
             {
                 SetAnimationDuration(animationName, animationDuration.Value);
             }
 
             animationStates.ForEach(x => animator.SetBool(x, x.Equals(animationName))); //Set animationName to true and all others to false
-            currentAnimationState = animationName;
+            _currentAnimationState = animationName;
         }
 
         public void StartTriggerAnimation(string animationName, float? animationDuration = null)
@@ -30,7 +35,6 @@ namespace Shared
             } 
             
             animator.SetTrigger(animationName);
-            currentAnimationState = animationName;
         }
         
         private void SetAnimationDuration(string animationName, float duration)

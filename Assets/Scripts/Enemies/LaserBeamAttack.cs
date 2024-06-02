@@ -44,8 +44,11 @@ namespace Enemies
 
         public void StopAttack()
         {
-            StopCoroutine(_currentAttack);
-            StopLaser();
+            if (_currentAttack != null)
+            {
+                StopCoroutine(_currentAttack);
+                StopLaser();
+            }
         }
 
         private IEnumerator FireLaser()

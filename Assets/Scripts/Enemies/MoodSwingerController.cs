@@ -1,4 +1,5 @@
 using Enemies.Interfaces;
+using Player;
 using Shared;
 using UnityEngine;
 
@@ -8,15 +9,16 @@ namespace Enemies
     public class MoodSwingerController : MonoBehaviour
     {
         [SerializeField] private MoodSwingerAIStateHandler aiStateHandler;
-        [SerializeField] private Transform playerTransform;
         [SerializeField] private AnimationHandler animationHandler;
-        private MovementAI _movementAI;
+        private IMovementAI _movementAI;
         private IAttack _attack;
+        private Transform playerTransform;
 
         private void Start()
         {
-            _movementAI = GetComponent<MovementAI>();
+            _movementAI = GetComponent<IMovementAI>();
             _attack = GetComponent<IAttack>();
+            playerTransform = PlayerManager.Instance.Player.transform;
         }
 
         private void Update()
@@ -25,7 +27,7 @@ namespace Enemies
             {
                 _movementAI.StopMovement();
                 _attack.StopAttack();
-                ChangeAnimationState("Stunned");
+                animationHandler.ChangeAnimationState("Stunned");
             }
             
             if (_attack.IsAttacking)
@@ -37,26 +39,18 @@ namespace Enemies
             {
                 case MoodSwingerState.Following:
                     _movementAI.FollowTarget(playerTransform);
-                    ChangeAnimationState("Follow");
+                    animationHandler.ChangeAnimationState("Follow");
                     break;
                 case MoodSwingerState.Attacking:
                     _attack.Attack();
-                    ChangeAnimationState("Attack");
+                    animationHandler.ChangeAnimationState("Attack");
                     _movementAI.FollowTarget(playerTransform); //Make sure the enemy is facing the player
                     _movementAI.StopMovement();
                     break;
                 case MoodSwingerState.Fleeing:
                     _movementAI.FleeTarget(playerTransform);
-                    ChangeAnimationState("Flee");
+                    animationHandler.ChangeAnimationState("Flee");
                     break;
-            }
-        }
-        
-        private void ChangeAnimationState(string animationName)
-        {
-            if (!animationHandler.currentAnimationState.Equals(animationName))
-            {
-                animationHandler.ChangeAnimationState(animationName);
             }
         }
     }
