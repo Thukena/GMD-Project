@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe80511e08ed9544a4e768da3171d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 2
+  attackDistance: 2.5
   animationHandler: {fileID: 7312740375505330339}
   attackHandler: {fileID: 7855080241206650493}
   health: {fileID: 556538202915481395}
