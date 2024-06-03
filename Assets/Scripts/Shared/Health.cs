@@ -8,24 +8,23 @@ namespace Shared
     public class Health : MonoBehaviour
     {
         public event Action OnDeath;
+        public event Action OnUpdateHealth;
         public float knockBackResistance;
         public float stunResistence;
         public bool isStunned;
         public bool isDead = false;
         public int maxHealth;
         public double healthRegenAmount;
+        public int currentHealth;
         [SerializeField] private float healthRegenRate;
-        [SerializeField] private Image greenHealthBar;
         [SerializeField] private KnockBackHandler knockBackHandler;
         
-        private int _currentHealth;
-        private bool IsFullHealth => _currentHealth == maxHealth;
+        private bool IsFullHealth => currentHealth == maxHealth;
 
         private double _excessRegenHealth;
         private void Start()
         {
-            _currentHealth = maxHealth;
-            greenHealthBar.fillAmount = 1f;
+            currentHealth = maxHealth;
             if (healthRegenAmount > 0)
             {
                 StartCoroutine(RegenHealth());
@@ -34,9 +33,9 @@ namespace Shared
 
         public void TakeDamage(int damage)
         {
-            UpdateCurrentHealth(_currentHealth - damage);
+            UpdateCurrentHealth(currentHealth - damage);
 
-            if (_currentHealth <= 0)
+            if (currentHealth <= 0)
             {
                 isDead = true;
                 OnDeath?.Invoke();
@@ -56,7 +55,7 @@ namespace Shared
 
             if (healthDifference > 0) //Heal if maxHealth increased
             {
-                UpdateCurrentHealth(_currentHealth + healthDifference);    
+                UpdateCurrentHealth(currentHealth + healthDifference);    
             }
         }
 
@@ -76,7 +75,7 @@ namespace Shared
                         regenAmount += 1;
                     }
                     
-                    UpdateCurrentHealth(_currentHealth + (int)regenAmount);
+                    UpdateCurrentHealth(currentHealth + (int)regenAmount);
                 }
             
                 yield return new WaitForSeconds(healthRegenRate);
@@ -85,14 +84,13 @@ namespace Shared
 
         private void UpdateCurrentHealth(int newCurrentHealthValue)
         {
-            if (_currentHealth > maxHealth)
+            if (currentHealth > maxHealth)
             {
                 newCurrentHealthValue = maxHealth;
             }
 
-            _currentHealth = newCurrentHealthValue;
-            
-            greenHealthBar.fillAmount = (float)_currentHealth / maxHealth;
+            currentHealth = newCurrentHealthValue;
+            OnUpdateHealth?.Invoke();
         }
     }
 }

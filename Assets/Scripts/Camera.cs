@@ -1,19 +1,21 @@
+using Player;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-
-    public GameObject Player;
-    
     private Vector3 offset;
-
+    private Transform _playerTransform;
     private void Start()
     {
-        offset = transform.position - Player.transform.position;
+        _playerTransform = PlayerController.Instance.transform;
+        offset = transform.position - _playerTransform.position;
     }
-    
+
     private void LateUpdate()
     {
-        transform.position = Player.transform.position + offset;
+        if (_playerTransform != null)
+        {
+            transform.position = _playerTransform.position + offset;
+        }
     }
 }

@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace UI
 {
-    public class GameOverCanvas : MonoBehaviour
+    public class GameOverPanel : MonoBehaviour
     {
         public void RestartGame()
         {
-            SceneController.Instance.StartGame();
+            SceneController.Instance.RestartGame();
         }
     
         public void ExitToMainMenu()

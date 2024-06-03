@@ -6,6 +6,7 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance { get; private set; }
         [SerializeField] private AnimationHandler animationHandler;
         [SerializeField] private BasicMovement basicMovement;
         [SerializeField] private AttackHandler attackHandler;
@@ -15,6 +16,19 @@ namespace Player
 
         private float _currentMovementXInput;
         private bool _jumpAfterDash;
+        
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
         
         private void Start()
         {

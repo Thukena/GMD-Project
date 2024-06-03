@@ -1,4 +1,3 @@
-using GameManagement;
 using Player;
 using Shared;
 using UnityEngine;
@@ -20,7 +19,7 @@ namespace Enemies
         private void Start()
         {
             lastAttackTime = -attackCooldown;
-            playerTransform = GameManager.Instance.Player.transform;
+            playerTransform = PlayerController.Instance.transform;
         }
 
         void Update()

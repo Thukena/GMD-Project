@@ -1,3 +1,5 @@
+using Player;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,14 +8,14 @@ namespace GameManagement
     public class SceneController : MonoBehaviour
     {
         public static SceneController Instance { get; private set; }
-        private int _currentState = 1;
+        private int _currentStage = 1;
         
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject); // Keep SceneController between scenes
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -23,20 +25,36 @@ namespace GameManagement
         
         public void StartGame()
         {
-            _currentState = 1;
             SceneManager.LoadScene("Stage1");
+            PlayerInput.Instance.EnablePlayerControls();
             Time.timeScale = 1;
+        }
+
+        public void RestartGame()
+        {
+            ResetGame();
+            StartGame();
+        }
+
+        private void ResetGame()
+        {
+            Destroy(GameManager.Instance.gameObject);
+            Destroy(UIHandler.Instance.gameObject);
+            Destroy(PlayerController.Instance.gameObject);
+            _currentStage = 1;
         }
         
         public void ExitToMainMenu()
         {
+            ResetGame();
             SceneManager.LoadScene("MainMenu"); 
         }
 
         public void StartNextStage()
         {
-            _currentState++;
-            SceneManager.LoadScene($"Stage{_currentState}"); 
+            _currentStage++;
+            PlayerController.Instance.transform.position = new Vector2(0, 0);
+            SceneManager.LoadScene($"Stage{_currentStage}"); 
         }
 
         public void ExitGame()

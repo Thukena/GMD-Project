@@ -1,5 +1,6 @@
 using Player;
 using Shared;
+using UI;
 using UnityEngine;
 
 namespace GameManagement
@@ -7,16 +8,14 @@ namespace GameManagement
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
-        public GameObject Player;
-        [SerializeField] private GameObject gameOverPanel;
-        [SerializeField] private PlayerInput playerInput;
         [SerializeField] private LevelUpManager playerLevelUpManager;
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
-                Player.GetComponent<Health>().OnDeath += OnPlayerDeath;
+                PlayerController.Instance.GetComponent<Health>().OnDeath += OnPlayerDeath;
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -27,8 +26,8 @@ namespace GameManagement
         private void OnPlayerDeath()
         {
             Time.timeScale = 0; // Pause the game
-            playerInput.EnableUIControls();
-            gameOverPanel.SetActive(true);
+            PlayerInput.Instance.EnableUIControls();
+            UIHandler.Instance.ShowGameOverPanel(true);
         }
 
         public void OnEnemyDeath(int xp)

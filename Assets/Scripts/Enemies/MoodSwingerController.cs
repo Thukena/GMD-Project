@@ -1,5 +1,4 @@
 using Enemies.Interfaces;
-using GameManagement;
 using Player;
 using Shared;
 using UnityEngine;
@@ -19,7 +18,7 @@ namespace Enemies
         {
             _movementAI = GetComponent<IMovementAI>();
             _attack = GetComponent<IAttack>();
-            playerTransform = GameManager.Instance.Player.transform;
+            playerTransform = PlayerController.Instance.transform;
         }
 
         private void Update()
