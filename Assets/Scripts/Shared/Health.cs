@@ -12,15 +12,16 @@ namespace Shared
         public float stunResistence;
         public bool isStunned;
         public bool isDead = false;
-        [SerializeField] private int maxHealth;
+        public int maxHealth;
+        public double healthRegenAmount;
         [SerializeField] private float healthRegenRate;
-        [SerializeField] private int healthRegenAmount;
         [SerializeField] private Image greenHealthBar;
         [SerializeField] private KnockBackHandler knockBackHandler;
         
         private int _currentHealth;
         private bool IsFullHealth => _currentHealth == maxHealth;
 
+        private double _excessRegenHealth;
         private void Start()
         {
             _currentHealth = maxHealth;
@@ -47,13 +48,35 @@ namespace Shared
             knockBackHandler.KnockBack(knockBackSpeed, knockBackDuration, stunDuration, attackerPosition);
         }
 
+        public void SetMaxHealth(int newMaxHealth)
+        {
+            var healthDifference = newMaxHealth - maxHealth;
+            
+            maxHealth = newMaxHealth;
+
+            if (healthDifference > 0) //Heal if maxHealth increased
+            {
+                UpdateCurrentHealth(_currentHealth + healthDifference);    
+            }
+        }
+
         private IEnumerator RegenHealth()
         {
             while (!isDead)
             {
                 if (!IsFullHealth)
                 {
-                    UpdateCurrentHealth(_currentHealth + healthRegenAmount);
+                    var regenAmount = Math.Floor(healthRegenAmount);
+                    
+                    _excessRegenHealth += healthRegenAmount - regenAmount;
+
+                    if (_excessRegenHealth >= 1)
+                    {
+                        _excessRegenHealth -= regenAmount;
+                        regenAmount += 1;
+                    }
+                    
+                    UpdateCurrentHealth(_currentHealth + (int)regenAmount);
                 }
             
                 yield return new WaitForSeconds(healthRegenRate);

@@ -1,3 +1,4 @@
+using Player;
 using Shared;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace GameManagement
         public GameObject Player;
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private PlayerInput playerInput;
+        [SerializeField] private LevelUpManager playerLevelUpManager;
         private void Awake()
         {
             if (Instance == null)
@@ -27,6 +29,11 @@ namespace GameManagement
             Time.timeScale = 0; // Pause the game
             playerInput.EnableUIControls();
             gameOverPanel.SetActive(true);
+        }
+
+        public void OnEnemyDeath(int xp)
+        {
+            playerLevelUpManager.AddXp(xp);
         }
     }
 }

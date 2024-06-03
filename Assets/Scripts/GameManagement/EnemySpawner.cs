@@ -1,3 +1,4 @@
+using Shared;
 using UnityEngine;
 
 namespace GameManagement
@@ -15,7 +16,9 @@ namespace GameManagement
 
         private void SpawnEnemy()
         {
-            Instantiate(EvilSamuPrefab, new Vector3(0, 10, 0), Quaternion.identity);
+            var enemy = Instantiate(EvilSamuPrefab, new Vector3(0, 10, 0), Quaternion.identity);
+            var health = enemy.GetComponent<Health>();
+            health.OnDeath += () => GameManager.Instance.OnEnemyDeath(50);
         }
     }
 }

@@ -8,8 +8,8 @@ namespace Shared
     {
         public float attackDuration;
         public bool canAttack = true;
-        [SerializeField] private int damage;
-        [SerializeField] private float attackCooldown;
+        public float damage;
+        public float attackCooldown;
         [SerializeField] private string targetTag;
         [SerializeField] BoxCollider2D boxCollider;
         [SerializeField] private float knockBackSpeed;
@@ -39,7 +39,7 @@ namespace Shared
                     {
                         _hitTargets.Add(hit);
                         var healthComponent = hit.GetComponent<Health>();
-                        healthComponent.TakeDamage(damage);
+                        healthComponent.TakeDamage((int)damage);
                         if (healthComponent.isDead == false)
                         {
                             healthComponent.GetKnockedBack(knockBackSpeed, knockBackDuration, stunDurationAfterKnockBack, transform.position.x);

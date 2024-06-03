@@ -1217,6 +1217,7 @@ GameObject:
   - component: {fileID: 887019326}
   - component: {fileID: 887019328}
   - component: {fileID: 887019329}
+  - component: {fileID: 887019330}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1269,6 +1270,7 @@ MonoBehaviour:
   Player: {fileID: 124729282}
   gameOverPanel: {fileID: 620530444}
   playerInput: {fileID: 887019329}
+  playerLevelUpManager: {fileID: 887019330}
 --- !u!114 &887019329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,6 +1284,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: be4ed4e22aa2db0429f8cdf5cfa347a7, type: 3}
+--- !u!114 &887019330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887019325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1020e279819ee34094eb937a700bbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttackHandler: {fileID: 7607759767999151800}
+  playerHealth: {fileID: 7607759767999151799}
+  increaseAttackDamagePerLevel: 10
+  increaseMaxHealthPerLevel: 10
+  increaseHealthRegenPerLevel: 10
+  increaseAttackSpeedPerLevel: 10
 --- !u!1001 &919748839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2640,6 +2660,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+--- !u!114 &7607759767999151799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+  m_PrefabInstance: {fileID: 7607759767999151798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124729282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823736e2cdbf0fa458dac701fc7647eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7607759767999151800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+  m_PrefabInstance: {fileID: 7607759767999151798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124729282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58020cd8cdbe0f4896ec871b5b0acdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
