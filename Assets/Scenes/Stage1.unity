@@ -91559,18 +91559,6 @@ PrefabInstance:
       propertyPath: boxCollider
       value: 
       objectReference: {fileID: 1405178266}
-    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      propertyPath: healthRegenRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      propertyPath: healthRegenAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6315777213375629659, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: knockBackSpeed
       value: 5
@@ -92607,6 +92595,18 @@ PrefabInstance:
     - target: {fileID: 4201110570114019277, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246041350657800691, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246041350657800691, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246041350657800691, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1263312577
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

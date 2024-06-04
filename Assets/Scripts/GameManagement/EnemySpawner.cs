@@ -78,7 +78,7 @@ namespace GameManagement
             }
 
             var offset = (_spawnOnRightSide ? 1 : -1) * spawnDistance;
-            var spawnArea = new Vector2(playerTransform.position.x + offset, playerTransform.position.y);
+            var spawnArea = new Vector2(playerTransform.position.x + offset, playerTransform.position.y + 10f);
 
             if (spawnArea.x > _spawnAreaMaxX || spawnArea.x < _spawnAreaMinX) // Invert the original offset if the enemy is going to spawn outside of the tilemap
             {
@@ -90,6 +90,7 @@ namespace GameManagement
             _spawnOnRightSide = !_spawnOnRightSide;
             var health = enemy.GetComponent<Health>();
             health.OnDeath += () => GameManager.Instance.OnEnemyDeath(34 * _difficultyManager.Difficulty);
+            print("Enemy spawned!");
         }
     }
 }
