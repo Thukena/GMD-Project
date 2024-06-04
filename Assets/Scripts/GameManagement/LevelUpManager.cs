@@ -19,7 +19,7 @@ namespace GameManagement
         [SerializeField] private float increaseAttackCooldownPerLevel;
         [SerializeField] private float increaseAttackDurationPerLevel;
         
-        private void Start()
+        private void Awake()
         {
             attack = GetComponent<IAttack>();
             level = 1;
@@ -35,6 +35,14 @@ namespace GameManagement
             }
             OnXpGain?.Invoke();
         }
+
+        public void IncreaseLevel(int level)
+        {
+            for (int i = 0; i < level; i++)
+            {
+                LevelUp();
+            }
+        }
         
         private void LevelUp()
         {
@@ -42,8 +50,8 @@ namespace GameManagement
             currentXp %= xpToNextLevel;
             xpToNextLevel *= 2;
             attack.Damage *= increaseAttackDamagePerLevel / 100 + 1;
-            attack.AttackCooldown /= increaseAttackCooldownPerLevel / 100 + 1;
-            attack.AttackDuration /= increaseAttackDurationPerLevel / 100 + 1;
+            attack.AttackCooldown *= increaseAttackCooldownPerLevel / 100 + 1;
+            attack.AttackDuration *= increaseAttackDurationPerLevel / 100 + 1;
             health.SetMaxHealth((int)(health.maxHealth * (increaseMaxHealthPerLevel / 100 + 1)));
             health.healthRegenAmount *= increaseHealthRegenPerLevel / 100 + 1;
         }

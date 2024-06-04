@@ -207,8 +207,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: knockBackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: knockBackHandler
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: knockBackDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: stunDurationAfterKnockBack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: isStunned
@@ -266,13 +278,13 @@ PrefabInstance:
       addedObject: {fileID: 2481131638543763747}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      insertIndex: 18
+      insertIndex: -1
       addedObject: {fileID: 3713585930559334966}
     - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      insertIndex: 19
+      insertIndex: -1
       addedObject: {fileID: 1237449328953646668}
     - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      insertIndex: 20
+      insertIndex: -1
       addedObject: {fileID: 572525295451200259}
   m_SourcePrefab: {fileID: 100100000, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
 --- !u!114 &556538202915481395 stripped

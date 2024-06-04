@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace UI
 {
-    public class Timer : MonoBehaviour
+    public class TimeHandler : MonoBehaviour
     {
-        private float _time;
+        public float time;
         [SerializeField] private TextMeshProUGUI timerText;
 
         private void Update()
         {
-            _time += Time.deltaTime;
-            var minutes = (int) _time / 60; 
-            var seconds = (int) _time % 60;      
+            time += Time.deltaTime;
+            var minutes = (int) time / 60; 
+            var seconds = (int) time % 60;      
 
             timerText.text = $"Time: {minutes:00}:{seconds:00}";
         }

@@ -8,6 +8,7 @@ namespace GameManagement
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
+        public DifficultyManager DifficultyManager;
         [SerializeField] private LevelUpManager playerLevelUpManager;
         private void Awake()
         {

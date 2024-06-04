@@ -8,7 +8,7 @@ namespace GameManagement
     public class SceneController : MonoBehaviour
     {
         public static SceneController Instance { get; private set; }
-        private int _currentStage = 1;
+        public int currentStage = 1;
         
         private void Awake()
         {
@@ -41,7 +41,7 @@ namespace GameManagement
             Destroy(GameManager.Instance.gameObject);
             Destroy(UIHandler.Instance.gameObject);
             Destroy(PlayerController.Instance.gameObject);
-            _currentStage = 1;
+            currentStage = 1;
         }
         
         public void ExitToMainMenu()
@@ -52,9 +52,9 @@ namespace GameManagement
 
         public void StartNextStage()
         {
-            _currentStage++;
+            currentStage++;
             PlayerController.Instance.transform.position = new Vector2(0, 0);
-            SceneManager.LoadScene($"Stage{_currentStage}"); 
+            SceneManager.LoadScene($"Stage{currentStage}"); 
         }
 
         public void ExitGame()
