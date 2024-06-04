@@ -4,12 +4,32 @@ using UnityEngine;
 
 namespace Shared
 {
-    public class AttackHandler : MonoBehaviour
+    public class MeleeAttack : MonoBehaviour, IAttack
     {
-        public float attackDuration;
-        public bool canAttack = true;
-        public float damage;
-        public float attackCooldown;
+
+        public bool IsAttacking { get; set; }
+        
+        [SerializeField] private float damage;
+        public float Damage
+        {
+            get => damage;
+            set => damage = value;
+        }
+
+        [SerializeField] private float attackCooldown;
+        public float AttackCooldown
+        {
+            get => attackCooldown;
+            set => attackCooldown = value;
+        }
+
+        [SerializeField] private float attackDuration;
+        public float AttackDuration
+        {
+            get => attackDuration;
+            set => attackDuration = value;
+        }
+        
         [SerializeField] private string targetTag;
         [SerializeField] BoxCollider2D boxCollider;
         [SerializeField] private float knockBackSpeed;
@@ -20,17 +40,22 @@ namespace Shared
 
         public void Attack()
         {
-            canAttack = false;
+            IsAttacking = true;
             _hitTargets.Clear(); 
             StartCoroutine(PerformAttack());
         }
-        
+
+        public void StopAttack()
+        {
+            return; //TODO stop coroutine
+        }
+
         private IEnumerator PerformAttack()
         {
             var elapsedTime = 0f;
             const float checkInterval = 0.01f;
 
-            while (elapsedTime < attackDuration)
+            while (elapsedTime < AttackDuration)
             {
                 Collider2D[] hits = Physics2D.OverlapBoxAll(boxCollider.bounds.center, boxCollider.size, boxCollider.transform.rotation.eulerAngles.z);
                 foreach (var hit in hits)
@@ -39,7 +64,7 @@ namespace Shared
                     {
                         _hitTargets.Add(hit);
                         var healthComponent = hit.GetComponent<Health>();
-                        healthComponent.TakeDamage((int)damage);
+                        healthComponent.TakeDamage((int)Damage);
                         if (healthComponent.isDead == false)
                         {
                             healthComponent.GetKnockedBack(knockBackSpeed, knockBackDuration, stunDurationAfterKnockBack, transform.position.x);
@@ -51,8 +76,8 @@ namespace Shared
                 yield return new WaitForSeconds(checkInterval);
             }
 
-            yield return new WaitForSeconds(attackCooldown);
-            canAttack = true;
+            yield return new WaitForSeconds(AttackCooldown);
+            IsAttacking = false;
         }
     }
 }

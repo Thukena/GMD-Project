@@ -9,7 +9,7 @@ namespace Player
         public static PlayerController Instance { get; private set; }
         [SerializeField] private AnimationHandler animationHandler;
         [SerializeField] private BasicMovement basicMovement;
-        [SerializeField] private AttackHandler attackHandler;
+        private IAttack attack;
         [SerializeField] private Dash dash;
         [SerializeField] private BasicJump basicJump;
         [SerializeField] private GravityHandler gravityHandler;
@@ -32,6 +32,7 @@ namespace Player
         
         private void Start()
         {
+            attack = GetComponent<IAttack>();
             dash.OnDashEnd += OnDashEnd;
         }
 
@@ -66,10 +67,10 @@ namespace Player
     
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if (context.performed && attackHandler.canAttack)
+            if (context.performed && !attack.IsAttacking)
             {
-                animationHandler.StartTriggerAnimation("Attack", attackHandler.attackDuration);
-                attackHandler.Attack();
+                animationHandler.StartTriggerAnimation("Attack", attack.AttackDuration);
+                attack.Attack();
             }
         }
     

@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc47d67fdf89cf4d851d27896cc76aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelUpManager: {fileID: 887019330}
+  levelUpManager: {fileID: 1411284666}
   blueXpBar: {fileID: 330674552}
   lvlText: {fileID: 727018736}
 --- !u!1 &338592349
@@ -1815,7 +1815,6 @@ GameObject:
   - component: {fileID: 887019327}
   - component: {fileID: 887019326}
   - component: {fileID: 887019328}
-  - component: {fileID: 887019330}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1866,28 +1865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b67a0b73e16947b09793a969920f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLevelUpManager: {fileID: 887019330}
---- !u!114 &887019330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887019325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1020e279819ee34094eb937a700bbf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentXp: 0
-  xpToNextLevel: 0
-  playerLevel: 0
-  playerAttackHandler: {fileID: 1411284661}
-  playerHealth: {fileID: 1411284652}
-  increaseAttackDamagePerLevel: 10
-  increaseMaxHealthPerLevel: 10
-  increaseHealthRegenPerLevel: 10
-  increaseAttackSpeedPerLevel: 10
+  playerLevelUpManager: {fileID: 1411284666}
 --- !u!1001 &919748839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2305,15 +2283,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823736e2cdbf0fa458dac701fc7647eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1411284661 stripped
+--- !u!114 &1411284666 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
   m_PrefabInstance: {fileID: 1411284647}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58020cd8cdbe0f4896ec871b5b0acdc, type: 3}
+  m_Script: {fileID: 11500000, guid: b1020e279819ee34094eb937a700bbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1440545058

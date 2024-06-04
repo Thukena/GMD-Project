@@ -10,14 +10,15 @@ namespace Enemies
     
         [SerializeField] private float attackDistance;
         [SerializeField] private AnimationHandler animationHandler;
-        [SerializeField] private AttackHandler attackHandler;
         [SerializeField] private Health health;
+        private IAttack attack;
 
         private IMovementAI _movementAI;
         private Transform playerTransform;
 
         private void Start()
         {
+            attack = GetComponent<IAttack>();
             _movementAI = GetComponent<IMovementAI>();
             playerTransform = PlayerController.Instance.transform;
             health.OnDeath += () => Destroy(gameObject);
@@ -31,16 +32,14 @@ namespace Enemies
                 return;
             }
             
-            var canAttack = attackHandler.canAttack;
-            
             if (Vector2.Distance(transform.position, playerTransform.position) <= attackDistance)
             {
                 _movementAI.StopMovement();
                 
-                if (canAttack)
+                if (!attack.IsAttacking)
                 {
-                    animationHandler.StartTriggerAnimation("Attack", attackHandler.attackDuration);
-                    attackHandler.Attack();
+                    animationHandler.StartTriggerAnimation("Attack", attack.AttackDuration);
+                    attack.Attack();
                 }
             }
             else

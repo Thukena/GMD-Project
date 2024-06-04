@@ -242,6 +242,18 @@ PrefabInstance:
       propertyPath: wallChecker
       value: 
       objectReference: {fileID: 5214436681830089628}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseHealthRegenPerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseAttackCooldownPerLevel
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseAttackDurationPerLevel
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 946385900617786549, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
     - {fileID: 4203358332605474249, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
@@ -254,13 +266,13 @@ PrefabInstance:
       addedObject: {fileID: 2481131638543763747}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      insertIndex: -1
+      insertIndex: 18
       addedObject: {fileID: 3713585930559334966}
     - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      insertIndex: -1
+      insertIndex: 19
       addedObject: {fileID: 1237449328953646668}
     - targetCorrespondingSourceObject: {fileID: 1053705560472392945, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-      insertIndex: -1
+      insertIndex: 20
       addedObject: {fileID: 572525295451200259}
   m_SourcePrefab: {fileID: 100100000, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
 --- !u!114 &556538202915481395 stripped
@@ -325,7 +337,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2.5
   animationHandler: {fileID: 7312740375505330339}
-  attackHandler: {fileID: 7855080241206650493}
   health: {fileID: 556538202915481395}
 --- !u!114 &1237449328953646668
 MonoBehaviour:
@@ -366,17 +377,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 210927d277c1477478b4b85ecc9238ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7855080241206650493 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
-  m_PrefabInstance: {fileID: 5871413830326224262}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6909912000183570807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58020cd8cdbe0f4896ec871b5b0acdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &9022428039609130328 stripped

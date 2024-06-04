@@ -9,14 +9,32 @@ namespace Enemies
     {
         
         public bool IsAttacking { get; set; }
+        [SerializeField] private float damage;
+        public float Damage
+        {
+            get => damage;
+            set => damage = value;
+        }
+
+        [SerializeField] private float attackCooldown;
+        public float AttackCooldown
+        {
+            get => attackCooldown;
+            set => attackCooldown = value;
+        }
+
+        [SerializeField] private float attackDuration;
+        public float AttackDuration
+        {
+            get => attackDuration;
+            set => attackDuration = value;
+        }
         [SerializeField] private float laserSpeed;
         [SerializeField] private GameObject laser;
         [SerializeField] private float scaleOffset; 
         [SerializeField] private Flipper flipper;
-        [SerializeField] private float duration;
         [SerializeField] private BoxCollider2D boxCollider;
         [SerializeField] private string targetTag;
-        [SerializeField] private int damage;
         [SerializeField] private float damageInterval;
 
         private readonly HashSet<Collider2D> _hitTargets = new();
@@ -55,7 +73,7 @@ namespace Enemies
         {
             float time = 0f;
             StartCoroutine(ReapplyDamageCoroutine());
-            while (time < duration)
+            while (time < AttackDuration)
             {
                 Vector3 scaleChange = Vector3.right * (laserSpeed * Time.deltaTime);
                 float direction = flipper.facingRight ? 1f : -1f;
@@ -72,7 +90,7 @@ namespace Enemies
                     {
                         _hitTargets.Add(hit);
                         Health healthComponent = hit.GetComponent<Health>();
-                        healthComponent.TakeDamage(damage);
+                        healthComponent.TakeDamage((int)Damage);
                     }
                 }
                 

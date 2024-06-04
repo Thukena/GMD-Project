@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 3721655484906131524}
   - component: {fileID: 6718895381931231898}
   - component: {fileID: 8161784694409201334}
+  - component: {fileID: 6327726851596809821}
   m_Layer: 0
   m_Name: Moodswinger
   m_TagString: Enemy
@@ -400,14 +401,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff1fdd1b5c44a84693e35e2a7a20a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
+  attackCooldown: 15
+  attackDuration: 5
   laserSpeed: 2
   laser: {fileID: 6934605315531133360}
   scaleOffset: 1.5
   flipper: {fileID: 4939605189315517186}
-  duration: 5
   boxCollider: {fileID: 2165630377321071087}
   targetTag: Player
-  damage: 5
   damageInterval: 0.5
 --- !u!95 &3721655484906131524
 Animator:
@@ -463,6 +465,27 @@ MonoBehaviour:
   - Attack
   - Stunned
   - Flee
+--- !u!114 &6327726851596809821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253732417335450912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1020e279819ee34094eb937a700bbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentXp: 0
+  xpToNextLevel: 100
+  level: 1
+  health: {fileID: 822538736875779681}
+  increaseAttackDamagePerLevel: 10
+  increaseMaxHealthPerLevel: 10
+  increaseHealthRegenPerLevel: 0
+  increaseAttackCooldownPerLevel: -10
+  increaseAttackDurationPerLevel: 0
 --- !u!1 &1838390183056815964
 GameObject:
   m_ObjectHideFlags: 0

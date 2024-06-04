@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 6500479679679143233}
   - component: {fileID: 7714314366856948732}
   - component: {fileID: 3533585815410854571}
+  - component: {fileID: 8189802476639528449}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -443,7 +444,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationHandler: {fileID: 3749072304539165989}
   basicMovement: {fileID: 3386898761760983958}
-  attackHandler: {fileID: 4357701142141395963}
   dash: {fileID: 6510533271030685582}
   basicJump: {fileID: 6500479679679143233}
   gravityHandler: {fileID: 7714314366856948732}
@@ -459,10 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58020cd8cdbe0f4896ec871b5b0acdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDuration: 0.2
-  canAttack: 1
   damage: 5
   attackCooldown: 0.5
+  attackDuration: 0.2
   targetTag: Enemy
   boxCollider: {fileID: 807697053250592778}
   knockBackSpeed: 0.5
@@ -551,6 +550,27 @@ MonoBehaviour:
   health: {fileID: 6251642010812228277}
   sprite: {fileID: 3192323960834627806}
   rigidBody: {fileID: 5297612052244125180}
+--- !u!114 &8189802476639528449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053705560472392945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1020e279819ee34094eb937a700bbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentXp: 0
+  xpToNextLevel: 100
+  level: 1
+  health: {fileID: 6251642010812228277}
+  increaseAttackDamagePerLevel: 10
+  increaseMaxHealthPerLevel: 10
+  increaseHealthRegenPerLevel: 10
+  increaseAttackCooldownPerLevel: 10
+  increaseAttackDurationPerLevel: 10
 --- !u!1 &3855803523410479266
 GameObject:
   m_ObjectHideFlags: 0

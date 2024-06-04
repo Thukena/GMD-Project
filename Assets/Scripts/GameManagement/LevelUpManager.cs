@@ -8,19 +8,21 @@ namespace GameManagement
     {
         public int currentXp;
         public int xpToNextLevel;
-        public int playerLevel;
+        public int level;
         public event Action OnXpGain;
 
-        [SerializeField] private AttackHandler playerAttackHandler;
-        [SerializeField] private Health playerHealth;
+        private IAttack attack;
+        [SerializeField] private Health health;
         [SerializeField] private float increaseAttackDamagePerLevel;
         [SerializeField] private float increaseMaxHealthPerLevel;
         [SerializeField] private float increaseHealthRegenPerLevel;
-        [SerializeField] private float increaseAttackSpeedPerLevel;
+        [SerializeField] private float increaseAttackCooldownPerLevel;
+        [SerializeField] private float increaseAttackDurationPerLevel;
         
         private void Start()
         {
-            playerLevel = 1;
+            attack = GetComponent<IAttack>();
+            level = 1;
             xpToNextLevel = 100;
         }
         
@@ -36,14 +38,14 @@ namespace GameManagement
         
         private void LevelUp()
         {
-            playerLevel++;
+            level++;
             currentXp %= xpToNextLevel;
             xpToNextLevel *= 2;
-            playerAttackHandler.damage *= increaseAttackDamagePerLevel / 100 + 1;
-            playerAttackHandler.attackCooldown /= increaseAttackSpeedPerLevel / 100 + 1;
-            playerAttackHandler.attackDuration /= increaseAttackDamagePerLevel / 100 + 1;
-            playerHealth.SetMaxHealth((int)(playerHealth.maxHealth * (increaseMaxHealthPerLevel / 100 + 1)));
-            playerHealth.healthRegenAmount *= increaseHealthRegenPerLevel / 100 + 1;
+            attack.Damage *= increaseAttackDamagePerLevel / 100 + 1;
+            attack.AttackCooldown /= increaseAttackCooldownPerLevel / 100 + 1;
+            attack.AttackDuration /= increaseAttackDurationPerLevel / 100 + 1;
+            health.SetMaxHealth((int)(health.maxHealth * (increaseMaxHealthPerLevel / 100 + 1)));
+            health.healthRegenAmount *= increaseHealthRegenPerLevel / 100 + 1;
         }
     }
 }

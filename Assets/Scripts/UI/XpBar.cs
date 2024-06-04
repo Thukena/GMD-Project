@@ -22,7 +22,7 @@ namespace UI
         private void UpdateXpBar()
         {
             blueXpBar.fillAmount = (float)levelUpManager.currentXp / levelUpManager.xpToNextLevel;
-            lvlText.text =  $"Lvl: {levelUpManager.playerLevel}";
+            lvlText.text =  $"Lvl: {levelUpManager.level}";
         }
     }
 }
