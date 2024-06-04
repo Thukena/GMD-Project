@@ -6,7 +6,6 @@ namespace GameManagement
 {
     public class DifficultyManager : MonoBehaviour
     {
-
         [SerializeField] private TimeHandler timeHandler;
         public int Difficulty = 1;
         public event Action OnDifficultyChange;
