@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,14 +8,21 @@ namespace UI
     {
         public float time;
         [SerializeField] private TextMeshProUGUI timerText;
-
+        public event Action OnMinutePassed;
+        private int _minutes;
         private void Update()
         {
             time += Time.deltaTime;
-            var minutes = (int) time / 60; 
+            var newMinutes = (int) time / 60;
             var seconds = (int) time % 60;      
+            if (newMinutes > _minutes)
+            {
+                OnMinutePassed?.Invoke();
+            }
 
-            timerText.text = $"Time: {minutes:00}:{seconds:00}";
+            _minutes = newMinutes;
+            
+            timerText.text = $"Time: {_minutes:00}:{seconds:00}";
         }
     }
 }

@@ -8,17 +8,20 @@ namespace GameManagement
     {
 
         [SerializeField] private TimeHandler timeHandler;
-        public int Difficulty { get; private set; }
+        public int Difficulty = 1;
+        public event Action OnDifficultyChange;
         private SceneController sceneController;
         private void Start()
         {
             sceneController = SceneController.Instance;
+            timeHandler.OnMinutePassed += UpdateDifficulty;
+            sceneController.OnStageChange += UpdateDifficulty;
         }
 
-        private void Update()
+        private void UpdateDifficulty()
         {
-            //TODO Should be event every minute and stageChange instead
             Difficulty = (int) timeHandler.time / 60 * sceneController.currentStage;
+            OnDifficultyChange?.Invoke();
         }
     }
 }

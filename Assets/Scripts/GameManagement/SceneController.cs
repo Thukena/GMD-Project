@@ -1,3 +1,4 @@
+using System;
 using Player;
 using UI;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace GameManagement
     {
         public static SceneController Instance { get; private set; }
         public int currentStage = 1;
-        
+        public event Action OnStageChange;
         private void Awake()
         {
             if (Instance == null)
@@ -55,6 +56,7 @@ namespace GameManagement
             currentStage++;
             PlayerController.Instance.transform.position = new Vector2(0, 0);
             SceneManager.LoadScene($"Stage{currentStage}"); 
+            OnStageChange?.Invoke();
         }
 
         public void ExitGame()

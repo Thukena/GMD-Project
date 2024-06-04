@@ -1,6 +1,9 @@
+using System;
+using System.Collections;
 using Player;
 using Shared;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GameManagement
 {
@@ -8,18 +11,35 @@ namespace GameManagement
     {
         [SerializeField] private GameObject EvilSamuPrefab;
         [SerializeField] private GameObject MoodSwingerPrefab;
-        [SerializeField] private float spawnInterval;
+        [SerializeField] private float startSpawnInterval;
         [SerializeField] private float spawnDistance;
         private bool _spawnOnRightSide;
         private Transform playerTransform;
         private GameManager _gameManager;
         private DifficultyManager _difficultyManager;
+        private float currentSpawnInterval;
         private void Start()
         {
+            currentSpawnInterval = startSpawnInterval;
             _gameManager = GameManager.Instance;
             _difficultyManager = _gameManager.DifficultyManager;
             playerTransform = PlayerController.Instance.transform;
-            InvokeRepeating("SpawnEnemy", 0.0f, spawnInterval);
+            _difficultyManager.OnDifficultyChange += UpdateSpawnInterval;
+            StartCoroutine(StartSpawningEnemies());
+        }
+
+        private void UpdateSpawnInterval()
+        {
+            currentSpawnInterval = (float)Math.Pow(startSpawnInterval,(double) -_difficultyManager.Difficulty*10 / 100 + 1); // Update spawn interval based on current difficulty
+        }
+        
+        public IEnumerator  StartSpawningEnemies()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(currentSpawnInterval);
+                SpawnEnemy();
+            }
         }
 
         private void SpawnEnemy()

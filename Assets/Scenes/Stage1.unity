@@ -1838,7 +1838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EvilSamuPrefab: {fileID: 6909912000183570807, guid: 5eb5fb22db55e8d44aefad9ce14e02ae, type: 3}
   MoodSwingerPrefab: {fileID: 253732417335450912, guid: 319b694a91d70db4d9b7e179a038702a, type: 3}
-  spawnInterval: 2
+  startSpawnInterval: 3
   spawnDistance: 30
 --- !u!4 &887019327
 Transform:
@@ -1896,6 +1896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeHandler: {fileID: 887019329}
+  Difficulty: 1
 --- !u!1001 &919748839
 PrefabInstance:
   m_ObjectHideFlags: 0
