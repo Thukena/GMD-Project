@@ -43,6 +43,7 @@ namespace GameManagement
             Destroy(GameManager.Instance.gameObject);
             Destroy(UIHandler.Instance.gameObject);
             Destroy(PlayerController.Instance.gameObject);
+            Destroy(AudioManager.Instance.gameObject);
             currentStage = 1;
         }
         
