@@ -10,12 +10,15 @@ namespace GameManagement
         public static GameManager Instance { get; private set; }
         public DifficultyManager DifficultyManager;
         [SerializeField] private LevelUpManager playerLevelUpManager;
+        private AudioManager _audioManager;
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
                 PlayerController.Instance.GetComponent<Health>().OnDeath += OnPlayerDeath;
+                _audioManager = AudioManager.Instance;
+                playerLevelUpManager.OnLevelUp += () => _audioManager.Play("LevelUp");
                 DontDestroyOnLoad(gameObject);
             }
             else

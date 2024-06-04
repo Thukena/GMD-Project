@@ -44,6 +44,8 @@ namespace Enemies
         private Vector3 _originalPosition;
         private Vector3 _originalBoxColliderSize;
         private Coroutine _currentAttack;
+        private AudioManager _audioManager;
+        private int laserSoundId;
         
         private void Start()
         {
@@ -51,10 +53,13 @@ namespace Enemies
             _originalScale = _laserTransform.localScale;
             _originalPosition = _laserTransform.localPosition;
             _originalBoxColliderSize = boxCollider.size * scaleOffset;
+            _audioManager = AudioManager.Instance;  
+            
         }
 
         public void Attack()
         {
+            laserSoundId = _audioManager.Play("Laser");
             IsAttacking = true;
             laser.SetActive(true);
             _currentAttack = StartCoroutine(FireLaser());
@@ -107,6 +112,7 @@ namespace Enemies
 
             laser.SetActive(false);
             IsAttacking = false;
+            _audioManager.Stop(laserSoundId);
         }
 
         private IEnumerator ReapplyDamageCoroutine()

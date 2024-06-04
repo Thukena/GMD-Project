@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6595a82795538d4683b4bf52de436c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeTime: 1
+  chargeTime: 30
   chargeTimeText: {fileID: 2728684339795435571}
   portalFilling: {fileID: 7148193216476698635}
 --- !u!1 &1408460614431493492

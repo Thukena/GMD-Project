@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +37,13 @@ namespace Shared
         [SerializeField] private float knockBackDuration;
         [SerializeField] private float stunDurationAfterKnockBack;
 
+        private AudioManager _audioManager;
         private readonly HashSet<Collider2D> _hitTargets = new();
+
+        private void Start()
+        {
+            _audioManager = AudioManager.Instance;
+        }
 
         public void Attack()
         {
@@ -62,6 +69,7 @@ namespace Shared
                 {
                     if (hit.CompareTag(targetTag) && !_hitTargets.Contains(hit))
                     {
+                        _audioManager.Play("SwordHit");
                         _hitTargets.Add(hit);
                         var healthComponent = hit.GetComponent<Health>();
                         healthComponent.TakeDamage((int)Damage);

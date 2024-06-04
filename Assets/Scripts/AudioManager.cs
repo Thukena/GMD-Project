@@ -30,6 +30,8 @@ public class AudioManager : MonoBehaviour
     }
 
     public List<Sound> sounds;
+    private Dictionary<int, AudioSource> activeSounds = new ();
+    private int currentId = 0;
 
     private void Start()
     {
@@ -43,10 +45,18 @@ public class AudioManager : MonoBehaviour
         Play("GamePlayMusic");
     }
 
-    public void Play(string name)
+    public int Play(string name)
     {
+        currentId++;
         var sound = sounds.Find(sound => sound.name == name);
         sound.source.Play();
+
+        if (sound.source.loop)
+        {
+            activeSounds[currentId] = sound.source;
+        }
+        
+        return currentId;
     }
     
     public void Stop()
@@ -55,5 +65,12 @@ public class AudioManager : MonoBehaviour
         {
             sound.source.Stop();
         }
+    }
+    
+    public void Stop(int id)
+    {
+        if (!activeSounds.ContainsKey(id)) return;
+        activeSounds[id].Stop();
+        activeSounds.Remove(id);
     }
 }

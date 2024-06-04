@@ -13,6 +13,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI healthText;
 
         private bool _hasHealthText;
+        private AudioManager _audioManager;
         private void Start()
         {
             health.OnUpdateHealth += UpdateHealthBar;
@@ -21,14 +22,20 @@ namespace UI
                 _hasHealthText = true;
                 healthText.text = health.currentHealth.ToString();
             }
+            _audioManager = AudioManager.Instance;
         }
 
         private void UpdateHealthBar()
         {
+            var oldHealth = greenHealthBar.fillAmount;
             greenHealthBar.fillAmount = (float)health.currentHealth / health.maxHealth;
 
             if (_hasHealthText)
             {
+                if (oldHealth > greenHealthBar.fillAmount)
+                {
+                    _audioManager.Play("PlayerDamage");
+                }
                 healthText.text = health.currentHealth.ToString();
             }
         }

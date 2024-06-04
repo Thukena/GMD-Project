@@ -10,6 +10,7 @@ namespace GameManagement
         public int xpToNextLevel;
         public int level;
         public event Action OnXpGain;
+        public event Action OnLevelUp;
 
         private IAttack attack;
         [SerializeField] private Health health;
@@ -54,6 +55,7 @@ namespace GameManagement
             attack.AttackDuration *= increaseAttackDurationPerLevel / 100 + 1;
             health.SetMaxHealth((int)(health.maxHealth * (increaseMaxHealthPerLevel / 100 + 1)));
             health.healthRegenAmount *= increaseHealthRegenPerLevel / 100 + 1;
+            OnLevelUp?.Invoke();
         }
     }
 }

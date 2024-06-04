@@ -197,7 +197,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -91987,7 +91987,27 @@ MonoBehaviour:
   - name: GamePlayMusic
     clip: {fileID: 8300000, guid: fe4e6b38bcf81af45b70a900df3bb935, type: 3}
     loop: 1
-    volume: 0.211
+    volume: 0.097
+    source: {fileID: 0}
+  - name: SwordHit
+    clip: {fileID: 8300000, guid: 39d58f0b8ae77ca49b7143889eb3cb46, type: 3}
+    loop: 0
+    volume: 1
+    source: {fileID: 0}
+  - name: LevelUp
+    clip: {fileID: 8300000, guid: c996a7b2a88a0e24da4f9fece23c1fe6, type: 3}
+    loop: 0
+    volume: 1
+    source: {fileID: 0}
+  - name: PlayerDamage
+    clip: {fileID: 8300000, guid: d6b52a95b13933f45bf034bc22095f50, type: 3}
+    loop: 0
+    volume: 1
+    source: {fileID: 0}
+  - name: Laser
+    clip: {fileID: 8300000, guid: 7f1db1587b0ae2d4d9dc7f84ab36690b, type: 3}
+    loop: 1
+    volume: 0.301
     source: {fileID: 0}
 --- !u!4 &1608065302
 Transform:
@@ -92607,6 +92627,10 @@ PrefabInstance:
     - target: {fileID: 6246041350657800691, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
       propertyPath: m_SortingLayerID
       value: 1263312577
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717108641336002700, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
+      propertyPath: chargeTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
