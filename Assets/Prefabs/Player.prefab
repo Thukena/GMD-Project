@@ -350,6 +350,9 @@ MonoBehaviour:
   collisionChecker: {fileID: 2432225764448399548}
   gravityHandler: {fileID: 7714314366856948732}
   spriteRenderer: {fileID: 3192323960834627806}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &6454002104662202483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +370,9 @@ MonoBehaviour:
   collisionChecker: {fileID: 142460385660096049}
   gravityHandler: {fileID: 7714314366856948732}
   sprite: {fileID: 3192323960834627806}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &5739726705709461561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,11 +398,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f06a3ae3c4f1949a3050044ed5d186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTouchingWall: 0
   parentTransform: {fileID: 1556622398067608217}
   collisionChecker: {fileID: 4497730565601684351}
   flipper: {fileID: 5739726705709461561}
   sprite: {fileID: 3192323960834627806}
-  isTouchingWall: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &6510533271030685582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09f485d1710332419e5d68ff5572c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -884,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09f485d1710332419e5d68ff5572c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -977,6 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09f485d1710332419e5d68ff5572c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

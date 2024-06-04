@@ -5,18 +5,17 @@ namespace Shared.Collision
     public class CollisionChecker : MonoBehaviour
     {
     
+        public BoxCollider2D boxCollider;
         [SerializeField] private LayerMask groundLayer;
-        private BoxCollider2D _boxCollider;
 
-        // Start is called before the first frame update
         private void Awake()
         {
-            _boxCollider = GetComponent<BoxCollider2D>();
+            boxCollider = GetComponent<BoxCollider2D>();
         }
 
         public Collider2D GetCollider()
         {
-            return Physics2D.OverlapBox(_boxCollider.bounds.center, _boxCollider.size, 0, groundLayer);
+            return Physics2D.OverlapBox(boxCollider.bounds.center, boxCollider.size, 0, groundLayer);
         }
     }
 }
