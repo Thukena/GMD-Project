@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff1fdd1b5c44a84693e35e2a7a20a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 8
   attackCooldown: 15
   attackDuration: 5
   laserSpeed: 2

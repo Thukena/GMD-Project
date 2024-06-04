@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Player;
 using UI;
 using UnityEngine;
@@ -55,7 +56,19 @@ namespace GameManagement
         {
             currentStage++;
             PlayerController.Instance.transform.position = new Vector2(0, 0);
-            SceneManager.LoadScene($"Stage{currentStage}"); 
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.LoadScene($"Stage{currentStage}");
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            StartCoroutine(InvokeStageChangeAfterFrame());
+        }
+
+        private IEnumerator InvokeStageChangeAfterFrame()
+        {
+            yield return new WaitForEndOfFrame();
             OnStageChange?.Invoke();
         }
 
