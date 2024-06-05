@@ -91591,6 +91591,26 @@ PrefabInstance:
       propertyPath: gravityStrength
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseMaxHealthPerLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseHealthRegenPerLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseAttackDamagePerLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseAttackCooldownPerLevel
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189802476639528449, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: increaseAttackDurationPerLevel
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 8966917681703055284, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -92007,7 +92027,7 @@ MonoBehaviour:
   - name: Laser
     clip: {fileID: 8300000, guid: 7f1db1587b0ae2d4d9dc7f84ab36690b, type: 3}
     loop: 1
-    volume: 0.301
+    volume: 0.218
     source: {fileID: 0}
 --- !u!4 &1608065302
 Transform:

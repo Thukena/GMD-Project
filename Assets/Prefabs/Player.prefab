@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  attackCooldown: 0.5
+  attackCooldown: 0.2
   attackDuration: 0.2
   targetTag: Enemy
   boxCollider: {fileID: 807697053250592778}
@@ -493,9 +493,9 @@ MonoBehaviour:
   isStunned: 0
   isDead: 0
   maxHealth: 100
-  healthRegenAmount: 1
+  healthRegenAmount: 1.5
   currentHealth: 0
-  healthRegenRate: 2
+  healthRegenRate: 1
   knockBackHandler: {fileID: 3533585815410854571}
 --- !u!114 &3749072304539165989
 MonoBehaviour:
