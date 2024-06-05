@@ -55,7 +55,6 @@ namespace Enemies
             _originalPosition = _laserTransform.localPosition;
             _originalBoxColliderSize = boxCollider.size * scaleOffset;
             _audioManager = AudioManager.Instance;  
-            
         }
 
         public void Attack()
@@ -87,9 +86,9 @@ namespace Enemies
                 _laserTransform.localScale += scaleChange;
                 _laserTransform.position += scaleChange * (scaleOffset * direction);
                 
-                boxCollider.size = _laserTransform.localScale * _originalBoxColliderSize.x;
+                var colliderSize = new Vector2(_laserTransform.localScale.x * _originalBoxColliderSize.x, _originalBoxColliderSize.y);
 
-                Collider2D[] hits = Physics2D.OverlapBoxAll(boxCollider.bounds.center, boxCollider.size, boxCollider.transform.rotation.eulerAngles.z);
+                Collider2D[] hits = Physics2D.OverlapBoxAll(boxCollider.bounds.center, colliderSize, boxCollider.transform.rotation.eulerAngles.z);
                 foreach (var hit in hits)
                 {
                     if (hit.CompareTag(targetTag) && !_hitTargets.Contains(hit))
