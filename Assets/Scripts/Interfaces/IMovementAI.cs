@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemies.Interfaces
+namespace Interfaces
 {
     public interface IMovementAI
     {

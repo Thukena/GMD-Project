@@ -1,5 +1,5 @@
 using System;
-using Enemies.Interfaces;
+using Interfaces;
 using Shared;
 using Shared.Collision;
 using UnityEngine;

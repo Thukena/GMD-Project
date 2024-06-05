@@ -59,14 +59,6 @@ public class AudioManager : MonoBehaviour
         return currentId;
     }
     
-    public void Stop()
-    {
-        foreach (var sound in sounds)
-        {
-            sound.source.Stop();
-        }
-    }
-    
     public void Stop(int id)
     {
         if (!activeSounds.ContainsKey(id)) return;

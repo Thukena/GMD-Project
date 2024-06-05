@@ -1,4 +1,4 @@
-using Enemies.Interfaces;
+using Interfaces;
 using Player;
 using Shared;
 using UnityEngine;
