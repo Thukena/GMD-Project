@@ -123,5 +123,13 @@ namespace Enemies
                 yield return new WaitForSeconds(damageInterval);
             }
         }
+
+        private void OnDestroy()
+        {
+            if (_audioManager != null)
+            {
+                _audioManager.Stop(laserSoundId);
+            }
+        }
     }
 }
