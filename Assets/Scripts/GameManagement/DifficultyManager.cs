@@ -19,7 +19,7 @@ namespace GameManagement
 
         private void UpdateDifficulty()
         {
-            Difficulty =  1 + (int) timeHandler.time / 60 * sceneController.currentStage;
+            Difficulty = (1 + (int) timeHandler.time / 60) * sceneController.currentStage;
             OnDifficultyChange?.Invoke();
         }
     }
