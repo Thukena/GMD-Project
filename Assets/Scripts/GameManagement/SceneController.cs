@@ -11,6 +11,8 @@ namespace GameManagement
         public static SceneController Instance { get; private set; }
         public int currentStage = 1;
         public event Action OnStageChange;
+        [SerializeField] private string[] _stages;
+        private int _currentStageIndex = 0;
         private void Awake()
         {
             if (Instance == null)
@@ -26,7 +28,7 @@ namespace GameManagement
         
         public void StartGame()
         {
-            SceneManager.LoadScene("Stage1");
+            SceneManager.LoadScene(_stages[0]);
             PlayerInput.Instance.EnablePlayerControls();
             Time.timeScale = 1;
         }
@@ -44,6 +46,7 @@ namespace GameManagement
             Destroy(PlayerController.Instance.gameObject);
             Destroy(AudioManager.Instance.gameObject);
             currentStage = 1;
+            _currentStageIndex = 0;
         }
         
         public void ExitToMainMenu()
@@ -54,9 +57,11 @@ namespace GameManagement
 
         public void StartNextStage()
         {
-            currentStage++;
+            _currentStageIndex = (_currentStageIndex + 1) % _stages.Length;
             PlayerController.Instance.transform.position = new Vector2(0, 0);
-            SceneManager.LoadScene($"Stage{currentStage}");
+            SceneManager.LoadScene(_stages[_currentStageIndex]);
+            currentStage++;
+            OnStageChange?.Invoke();
         }
 
         public void ExitGame()

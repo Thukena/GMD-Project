@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1098132465
-  m_SortingLayer: -1
+  m_SortingLayerID: 1263312577
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3e20a0f54d9667747bdc2ca515ea994e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6595a82795538d4683b4bf52de436c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeTime: 30
+  chargeTime: 20
   chargeTimeText: {fileID: 2728684339795435571}
   portalFilling: {fileID: 7148193216476698635}
 --- !u!1 &1408460614431493492
@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 6973373210349645436}
   - component: {fileID: 544460271418629579}
   - component: {fileID: 2522640023208068078}
+  - component: {fileID: 1757216396314317794}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -174,7 +175,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408460614431493492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -250,6 +251,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!210 &1757216396314317794
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408460614431493492}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -5
+  m_SortAtRoot: 0
 --- !u!1 &4181150467375676092
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +408,6 @@ GameObject:
   - component: {fileID: 3966329171539638711}
   - component: {fileID: 1904665758731626740}
   - component: {fileID: 7148193216476698635}
-  - component: {fileID: 7109239001236412509}
   m_Layer: 5
   m_Name: PortalFilling
   m_TagString: Untagged
@@ -460,15 +472,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!210 &7109239001236412509
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369831885586990438}
-  m_Enabled: 1
-  m_SortingLayerID: 1501540517
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 0

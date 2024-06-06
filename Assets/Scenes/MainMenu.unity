@@ -287,6 +287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStage: 1
+  _stages:
+  - Stage1
+  - Stage2
 --- !u!4 &334472493
 Transform:
   m_ObjectHideFlags: 0

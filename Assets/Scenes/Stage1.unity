@@ -197,7 +197,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -85566,7 +85566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You survied
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -91519,6 +91519,10 @@ PrefabInstance:
       propertyPath: groundLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 3192323960834627806, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3750066606655957371, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 64
@@ -91559,6 +91563,10 @@ PrefabInstance:
       propertyPath: boxCollider
       value: 
       objectReference: {fileID: 1405178266}
+    - target: {fileID: 4588900899932345217, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6315777213375629659, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: knockBackSpeed
       value: 5
@@ -92635,22 +92643,6 @@ PrefabInstance:
     - target: {fileID: 4201110570114019277, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6246041350657800691, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
-      propertyPath: m_SortingLayer
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6246041350657800691, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6246041350657800691, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1263312577
-      objectReference: {fileID: 0}
-    - target: {fileID: 6717108641336002700, guid: 487dc319059f15442ab59ca4aaafc47b, type: 3}
-      propertyPath: chargeTime
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

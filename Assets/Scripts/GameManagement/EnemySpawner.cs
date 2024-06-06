@@ -53,7 +53,7 @@ namespace GameManagement
             currentSpawnInterval = (float)Math.Pow(startSpawnInterval,(double) -_difficultyManager.Difficulty*10 / 100 + 1); // Update spawn interval based on current difficulty
         }
         
-        public IEnumerator  StartSpawningEnemies()
+        private IEnumerator StartSpawningEnemies()
         {
             while (true)
             {

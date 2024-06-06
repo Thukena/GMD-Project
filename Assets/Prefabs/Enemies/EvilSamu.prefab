@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e1bd836f3c7817e498463eca07ffa064, type: 3}
     - target: {fileID: 3192323960834627806, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3386898761760983958, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: speed
@@ -225,6 +225,10 @@ PrefabInstance:
     - target: {fileID: 4357701142141395963, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: stunDurationAfterKnockBack
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588900899932345217, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6251642010812228277, guid: 5f4924b23529a0d4a96dcd0f40478858, type: 3}
       propertyPath: isStunned
