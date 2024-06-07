@@ -3,7 +3,7 @@
 
 
 ## Video demonstration of the Game
-- [Speedy Samu - GMD](https://www.youtube.com/watch?v=AFa4jKG3zJ0)
+- [Speedy Samu - GMD](https://youtu.be/QXESnyrJMbg)
 
 ## Blog posts
 - [#1 Roll-a-ball](https://github.com/Thukena/GMD-Project/blob/main/BlogPosts/%231%20Roll-a-ball.md)
